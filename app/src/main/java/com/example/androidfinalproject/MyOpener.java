@@ -11,7 +11,7 @@ public class MyOpener extends SQLiteOpenHelper {
     protected final static int VERSION_NUM = 1;
     public final static String TABLE_NAME = "NASA_IMAGES";
     public final static String COL_ID = "_id";
-    public final static String COL_DATE = "date";
+    public final static String COL_DATE = "dates";
     public final static String COL_URL = "url";
     public final static String COL_HDURL = "hd_url";
 
