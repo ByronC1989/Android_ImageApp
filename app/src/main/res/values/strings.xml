@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">AndroidFinalProject</string>
+    <string name="app_name">Nasa App V.1</string>
+    <string name="open" translatable="false">Open</string>
+    <string name="close" translatable="false">Close</string>
+    <string name="title1" translatable="false">title1</string>
+    <string name="title2" translatable="false">title2</string>
+    <string name="title3" translatable="false">title3</string>
+    <string name="exit" translatable="false">Exit</string>
 </resources>
