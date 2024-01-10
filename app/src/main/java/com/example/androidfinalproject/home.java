@@ -64,7 +64,7 @@ public class home extends AppCompatActivity implements NavigationView.OnNavigati
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         String message = null;
-//on click
+        //on click
         if (item.getItemId() == R.id.title1) {
             message = "title 1";
             //take to wherever we line this up to

@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <!-- Adds toolbar layout to activity -->
-    <include layout="@layout/toolbar_main" />
+    <include layout="@layout/home" />
 
     <TextView
         android:layout_width="wrap_content"
