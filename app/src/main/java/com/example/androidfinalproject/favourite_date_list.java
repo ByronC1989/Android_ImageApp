@@ -14,61 +14,58 @@ import android.widget.Switch;
 import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
-
 import java.util.List;
 
 
-public class favouritedate_list extends AppCompatActivity {
-    private List<fav_list> SavedDateList;
+public class favourite_date_list extends AppCompatActivity {
+    private List<favourite_DateAdapter> SavedDateList;
     private MyListAdapter todoAdapter;
-    private Database_opener dbOpener;
+    private Opener MyOpener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.favourite_date);
 
-        dbOpener = new Database_opener(this);
+        MyOpener = new Opener(this);
 
-        SQLiteDatabase db = dbOpener.getReadableDatabase();
-        Cursor cursor = db.query(Database_opener.Table_Name, null, null, null, null, null, null);
-        dbOpener.printCursor(cursor);
+        SQLiteDatabase db = MyOpener.getReadableDatabase();
+        Cursor cursor = db.query(MyOpener.TABLE_NAME, null, null, null, null, null, null);
+        MyOpener.printCursor(cursor);
 
-        SavedDateList = dbOpener.loadData();
+        SavedDateList = MyOpener.loadData();
         todoAdapter = new MyListAdapter(SavedDateList);
 
-        ListView SavedDateList = findViewById(R.id.list_view);
-        SavedDateList.setAdapter(todoAdapter);
-
-        dbOpener.loadData();
-        todoAdapter.notifyDataSetChanged();
+        ListView savedDateListView = findViewById(R.id.list_view);
+        savedDateListView.setAdapter(todoAdapter);
 
         EditText editText = findViewById(R.id.type_here_edit);
-        Switch FavouriteSwitch = findViewById(R.id.favourite_switch);
+        Switch favouriteSwitch = findViewById(R.id.favourite_switch);
         Button addButton = findViewById(R.id.add_button);
 
         addButton.setOnClickListener(v -> {
-            String itemText = editText.getText().toString();
-            boolean isFavourite = FavouriteSwitch.isChecked();
+            String date = editText.getText().toString();
+            boolean isFavourite = favouriteSwitch.isChecked();
 
-            fav_list SavedDate = new fav_list(itemText, isFavourite, 0);
-            SavedDateList.add(SavedDate);
+            String nasaPictureUrl = retrieveNasaPictureUrl(date);
 
-            dbOpener.addToDB(itemText, isFavourite);
+            favourite_DateAdapter savedDate = new favourite_DateAdapter(date, isFavourite, nasaPictureUrl);
+            SavedDateList.add(savedDate);
+
+            MyOpener.addToDB(date, isFavourite, nasaPictureUrl);
 
             todoAdapter.notifyDataSetChanged();
             editText.setText("");
         });
 
-        SavedDateList.setOnItemLongClickListener((parent, view, position, id) -> {
+        savedDateListView.setOnItemLongClickListener((parent, view, position, id) -> {
             AlertDialog.Builder alert = new AlertDialog.Builder(this);
             alert.setTitle("Do you want to delete this?")
                     .setMessage("The selected row is:" + (position + 1))
                     .setPositiveButton("Yes", (click, arg) -> {
                         int itemId = SavedDateList.get(position).getId();
 
-                        dbOpener.deleteFromDB(itemId);
+                        MyOpener.deleteFromDB(itemId);
 
                         SavedDateList.remove(position);
                         todoAdapter.notifyDataSetChanged();
@@ -80,13 +77,18 @@ public class favouritedate_list extends AppCompatActivity {
         });
     }
 
-    class MyListAdapter extends BaseAdapter {
-        private List<fav_list> SavedDateList;
+    private String retrieveNasaPictureUrl(String date) {
+       return getNasaPictureUrl(date);
+    }
 
-        public MyListAdapter(List<fav_list> todoItemList) {
+    class MyListAdapter extends BaseAdapter {
+        private List<favourite_DateAdapter> SavedDateList;
+
+        public MyListAdapter(List<favourite_DateAdapter> SavedDates) {
             super();
-            this.SavedDateList = todoItemList;
+            this.SavedDateList = SavedDates;
         }
+
         public int getCount() {
             return SavedDateList.size();
         }
@@ -106,13 +108,14 @@ public class favouritedate_list extends AppCompatActivity {
             if (newView == null) {
                 newView = inflater.inflate(R.layout.favourite_date, parent, false);
             }
+
             TextView tView = newView.findViewById(R.id.list_content);
 
-            fav_list todoItem = (fav_list) getItem(position);
+            favourite_DateAdapter SavedDates = (favourite_DateAdapter) getItem(position);
 
-            tView.setText(todoItem.getItemText());
+            tView.setText(SavedDates.getDate());
 
-            if (SavedDateList.isFavourite()) {
+            if (SavedDates.isFavourite()) {
                 newView.setBackgroundColor(Color.RED);
                 tView.setTextColor(Color.WHITE);
             } else {
