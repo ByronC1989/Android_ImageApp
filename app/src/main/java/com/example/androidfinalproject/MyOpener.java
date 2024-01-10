@@ -59,8 +59,8 @@ public class MyOpener extends SQLiteOpenHelper {
             int FavouriteInt = results.getInt(FavouriteColumnIndex);
             boolean FAVOURITE = (FavouriteInt == 1);
 
-            favourite_DateAdapter Favourite_item = new favourite_DateAdapter(COL_ID,FAVOURITE,COL_DATE);
-            SavedDates.add(Favourite_item);
+//            favourite_DateAdapter Favourite_item = new favourite_DateAdapter(COL_ID,FAVOURITE,COL_DATE);
+//            SavedDates.add(Favourite_item);
         }
 
         results.close();

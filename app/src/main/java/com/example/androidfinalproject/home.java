@@ -66,14 +66,14 @@ public class home extends AppCompatActivity implements NavigationView.OnNavigati
         String message = null;
         //on click
         if (item.getItemId() == R.id.title1) {
-            message = "title 1";
+            message = "Home";
             //take to wherever we line this up to
             Intent intent = new Intent(this, home.class);
             startActivity(intent);
             //take to wherever we line this up to
         } else if (item.getItemId() == R.id.title2) {
-            message = "title 2";
-            Intent titleIntent = new Intent(this, home.class);
+            message = "Picture of the Day";
+            Intent titleIntent = new Intent(this, ImageOfTheDay.class);
             startActivity(titleIntent);
             //exit
         } else if (item.getItemId() == R.id.exit) {

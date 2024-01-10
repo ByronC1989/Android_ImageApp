@@ -49,8 +49,8 @@ public class favourite_date_list extends AppCompatActivity {
 
             String nasaPictureUrl = getNasaPictureUrl();
 
-            favourite_DateAdapter savedDate = new favourite_DateAdapter(ID,date,isFavourite, nasaPictureUrl);
-            SavedDateList.add(savedDate);
+//            favourite_DateAdapter savedDate = new favourite_DateAdapter(ID,date,isFavourite, nasaPictureUrl);
+//            SavedDateList.add(savedDate);
 
             MyOpener.addToDB(date, isFavourite, nasaPictureUrl);
 
