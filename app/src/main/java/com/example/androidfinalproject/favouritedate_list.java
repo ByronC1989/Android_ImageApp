@@ -20,14 +20,14 @@ import java.util.List;
 public class favourite_date_list extends AppCompatActivity {
     private List<favourite_DateAdapter> SavedDateList;
     private MyListAdapter todoAdapter;
-    private Opener MyOpener;
+    private MyOpener MyOpener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.favourite_date);
 
-        MyOpener = new Opener(this);
+        MyOpener myOpener = new MyOpener(this);
 
         SQLiteDatabase db = MyOpener.getReadableDatabase();
         Cursor cursor = db.query(MyOpener.TABLE_NAME, null, null, null, null, null, null);
@@ -47,9 +47,9 @@ public class favourite_date_list extends AppCompatActivity {
             String date = editText.getText().toString();
             boolean isFavourite = favouriteSwitch.isChecked();
 
-            String nasaPictureUrl = retrieveNasaPictureUrl(date);
+            String nasaPictureUrl = getNasaPictureUrl();
 
-            favourite_DateAdapter savedDate = new favourite_DateAdapter(date, isFavourite, nasaPictureUrl);
+            favourite_DateAdapter savedDate = new favourite_DateAdapter(ID,date,isFavourite, nasaPictureUrl);
             SavedDateList.add(savedDate);
 
             MyOpener.addToDB(date, isFavourite, nasaPictureUrl);
@@ -63,9 +63,9 @@ public class favourite_date_list extends AppCompatActivity {
             alert.setTitle("Do you want to delete this?")
                     .setMessage("The selected row is:" + (position + 1))
                     .setPositiveButton("Yes", (click, arg) -> {
-                        int itemId = SavedDateList.get(position).getId();
+                        int ID = SavedDateList.get(position).getID();
 
-                        MyOpener.deleteFromDB(itemId);
+                        MyOpener.deleteFromDB(ID);
 
                         SavedDateList.remove(position);
                         todoAdapter.notifyDataSetChanged();
@@ -77,8 +77,8 @@ public class favourite_date_list extends AppCompatActivity {
         });
     }
 
-    private String retrieveNasaPictureUrl(String date) {
-       return getNasaPictureUrl(date);
+    private String getNasaPictureUrl() {
+       return getNasaPictureUrl();
     }
 
     class MyListAdapter extends BaseAdapter {

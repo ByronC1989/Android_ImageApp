@@ -81,30 +81,30 @@ public class MyOpener extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void deleteFromDB(int itemId) {
+    public void deleteFromDB(int ID) {
         SQLiteDatabase db = getWritableDatabase();
-        db.delete(TABLE_NAME, COL_DATE + "=?", new String[]{String.valueOf(itemId)});
+        db.delete(TABLE_NAME, COL_DATE + "=?", new String[]{String.valueOf(ID)});
         db.close();
     }
 
-    public void printCursor(Cursor c) {
+    public void printCursor(Cursor cursor) {
         SQLiteDatabase db = getWritableDatabase();
         Log.d("Opener", "Database Version: " + db.getVersion());
 
-        Log.d("Opener", "Number of Columns: " + c.getColumnCount());
-        for (int i = 0; i < c.getColumnCount(); i++) {
-            Log.d("Opener", "Column " + i + ": " + c.getColumnName(i));
+        Log.d("Opener", "Number of Columns: " + cursor.getColumnCount());
+        for (int i = 0; i < cursor.getColumnCount(); i++) {
+            Log.d("Opener", "Column " + i + ": " + cursor.getColumnName(i));
         }
 
-        Log.d("Opener", "Number of Results: " + c.getCount());
+        Log.d("Opener", "Number of Results: " + cursor.getCount());
 
-        while (c.moveToNext()) {
-            for (int i = 0; i < c.getColumnCount(); i++) {
-                Log.d("Opener", "Row " + c.getPosition() + ", Column " + i + ": " + c.getString(i));
+        while (cursor.moveToNext()) {
+            for (int i = 0; i < cursor.getColumnCount(); i++) {
+                Log.d("Opener", "Row " + cursor.getPosition() + ", Column " + i + ": " + cursor.getString(i));
             }
         }
 
-        c.close();
+        cursor.close();
         db.close();
     }
 }
