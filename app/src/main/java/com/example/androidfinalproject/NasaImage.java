@@ -1,30 +1,39 @@
 package com.example.androidfinalproject;
 
+import android.graphics.Bitmap;
+
 public class NasaImage {
 
     // use builder pattern for creating NasaImage objects?
     // store variables of Nasa Images from JSON payload
-    private String Date;
-    private String Url;
-    private String HdUrl;
+    private String date;
+    private String url;
+    private String hdUrl;
+    private String title;
+    private Bitmap image;
 
     // NasaImage Setters
-    public void setDate(String Date) {
-        this.Date = Date;
+    public void setDate(String date) {
+        this.date = date;
+    }
+    public void setTitle(String title) { this.title = title; }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
-    public void setUrl(String Url) {
-        this.Url = Url;
+    public void setHdUrl(String hdUrl) {
+        this.hdUrl = hdUrl;
     }
 
-    public void setHdUrl(String HdUrl) {
-        this.HdUrl = HdUrl;
-    }
+    public void setImage(Bitmap image) { this.image = image; }
 
     // NasaImage Getters
-    public String getDate() { return Date; }
-    public String getUrl() { return Url; }
-    public String getHdUrl() { return HdUrl; }
+    public String getDate() { return date; }
+    public String getUrl() { return url; }
+    public String getHdUrl() { return hdUrl; }
+    public String getTitle() { return title; }
+    public Bitmap getImage() { return image; }
 
 
 }

@@ -7,15 +7,26 @@
     tools:context=".ImageOfTheDay">
 
     <!-- Adds toolbar layout to activity -->
-    <include layout="@layout/toolbar_main" />
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar_main" />
+
+    <TextView
+        android:id="@+id/tv_Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TITLE"
+        app:layout_constraintBottom_toTopOf="@+id/tv_Date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tv_URL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="URL"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_HdURL" />
 
     <TextView
         android:id="@+id/tv_HdURL"
@@ -23,18 +34,19 @@
         android:layout_height="wrap_content"
         android:text="HD URL"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_Nasa" />
 
     <TextView
         android:id="@+id/tv_Date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="DATE"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/iv_Nasa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/iv_Nasa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
