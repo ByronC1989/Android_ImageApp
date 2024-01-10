@@ -86,7 +86,7 @@ public class favourite_date_list extends AppCompatActivity {
 
     //construct the URL for NASA picture based on the date
     public static String getNasaPictureUrl(String date) {
-        return "https://example.com/nasa_picture_for_date/" + date;
+        return "https://api.nasa.gov/planetary/apod?api_key=DgPLcIlnmN0Cwrzcg3e9NraFaYLIDI68Ysc6Zh3d&date=" + date;
     }
 
     //Placeholder method for getting an ID
