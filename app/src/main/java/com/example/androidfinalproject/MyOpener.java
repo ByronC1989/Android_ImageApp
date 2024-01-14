@@ -11,37 +11,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyOpener extends SQLiteOpenHelper {
-    // database definition variables.
     protected static String DATABASE_NAME = "NasaDB";
     protected static int VERSION_NUM = 1;
     public static String TABLE_NAME = "NASA_IMAGES";
-    public static String COL_ID = "_id";
+    public static String COL_ID = "ID";
     public static String COL_DATE = "date";
     public static String COL_URL = "url";
     public static String COL_HDURL = "hd_url";
     public static String FAVOURITE = "FAVOURITE";
 
-
     public MyOpener(Context ctx) {
         super(ctx, DATABASE_NAME, null, VERSION_NUM);
     }
 
+    //Called when the database is created
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + TABLE_NAME + "("
                 + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-            + COL_DATE + " TEXT,"
-            + COL_URL + " TEXT,"
-            + FAVOURITE + " INTEGER,"
-            + COL_HDURL + " TEXT);");
-}
+                + COL_DATE + " TEXT,"
+                + COL_URL + " TEXT,"
+                + FAVOURITE + " INTEGER,"
+                + COL_HDURL + " TEXT);");
+    }
 
+    //Called when the database needs to be upgraded
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
     }
 
+    //Load data from the database and return a list of saved dates
     public List<favourite_DateAdapter> loadData() {
         List<favourite_DateAdapter> SavedDates = new ArrayList<>();
         SQLiteDatabase db = getWritableDatabase();
@@ -53,22 +54,22 @@ public class MyOpener extends SQLiteOpenHelper {
         int DateColumnIndex = results.getColumnIndex(COL_DATE);
         int FavouriteColumnIndex = results.getColumnIndex(FAVOURITE);
 
+        //Iterate through the database results and create saved date objects
         while (results.moveToNext()) {
             int ID = results.getInt(IDColumnIndex);
             String Date = results.getString(DateColumnIndex);
             int FavouriteInt = results.getInt(FavouriteColumnIndex);
-            boolean FAVOURITE = (FavouriteInt == 1);
+            boolean isFavourite = (FavouriteInt == 1);
 
-//            favourite_DateAdapter Favourite_item = new favourite_DateAdapter(COL_ID,FAVOURITE,COL_DATE);
-//            SavedDates.add(Favourite_item);
+            String nasaPictureUrl = favourite_date_list.getNasaPictureUrl(Date);
+
+            favourite_DateAdapter savedDate = new favourite_DateAdapter(ID, Date, isFavourite, nasaPictureUrl);
+            SavedDates.add(savedDate);
         }
-
-        results.close();
-        db.close();
-
         return SavedDates;
     }
 
+    //Add a date to the database
     public void addToDB(String date, boolean isFavourite, String nasaPictureUrl) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -77,16 +78,17 @@ public class MyOpener extends SQLiteOpenHelper {
         values.put(COL_URL, nasaPictureUrl);
 
         db.insert(TABLE_NAME, null, values);
-
         db.close();
     }
 
+    //Delete a date from the database by ID
     public void deleteFromDB(int ID) {
         SQLiteDatabase db = getWritableDatabase();
         db.delete(TABLE_NAME, COL_DATE + "=?", new String[]{String.valueOf(ID)});
         db.close();
     }
 
+    // print cursor information for debugging
     public void printCursor(Cursor cursor) {
         SQLiteDatabase db = getWritableDatabase();
         Log.d("Opener", "Database Version: " + db.getVersion());
