@@ -18,7 +18,8 @@ public class MyOpener extends SQLiteOpenHelper {
     public static String COL_DATE = "date";
     public static String COL_URL = "url";
     public static String COL_HDURL = "hd_url";
-    public static String FAVOURITE = "FAVOURITE";
+    public static String COL_FILEPATH = "filepath";
+    public static String COL_TITLE = "filepath";
 
     public MyOpener(Context ctx) {
         super(ctx, DATABASE_NAME, null, VERSION_NUM);
@@ -31,7 +32,8 @@ public class MyOpener extends SQLiteOpenHelper {
                 + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + COL_DATE + " TEXT,"
                 + COL_URL + " TEXT,"
-                + FAVOURITE + " INTEGER,"
+                + COL_TITLE + "TEXT,"
+                + COL_FILEPATH + "TEXT,"
                 + COL_HDURL + " TEXT);");
     }
 

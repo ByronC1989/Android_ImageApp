@@ -12,7 +12,6 @@ public class NasaImage {
     private String hdUrl;
     private String title;
     private String filePath;
-
     private Bitmap image;
 
     // NasaImage Setters
