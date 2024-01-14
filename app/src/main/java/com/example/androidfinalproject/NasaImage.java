@@ -1,6 +1,5 @@
 package com.example.androidfinalproject;
 
-import android.graphics.Bitmap;
 
 public class NasaImage {
 
@@ -10,7 +9,7 @@ public class NasaImage {
     private String url;
     private String hdUrl;
     private String title;
-    private Bitmap image;
+    private String filePath;
 
     // NasaImage Setters
     public void setDate(String date) {
@@ -26,14 +25,14 @@ public class NasaImage {
         this.hdUrl = hdUrl;
     }
 
-    public void setImage(Bitmap image) { this.image = image; }
+    public void setfilePath(String filePath) { this.filePath = filePath; }
 
     // NasaImage Getters
     public String getDate() { return date; }
     public String getUrl() { return url; }
     public String getHdUrl() { return hdUrl; }
     public String getTitle() { return title; }
-    public Bitmap getImage() { return image; }
+    public String getFilePath() { return filePath;}
 
 
 }
