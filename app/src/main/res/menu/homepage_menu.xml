@@ -2,18 +2,28 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/title1"
-        android:title="@string/title1"
+        android:id="@+id/home"
+        android:title="@string/menuHome"
         android:orderInCategory="5"
         app:showAsAction="never" />
     <item
-        android:id="@+id/title2"
-        android:title="@string/title2"
+        android:id="@+id/profile"
+        android:title="@string/menuProfile"
+        android:orderInCategory="5"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/picOfTheDay"
+        android:title="@string/menuPicOfDay"
+        android:orderInCategory="5"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/picRoulette"
+        android:title="@string/menuPicRoulette"
         android:orderInCategory="5"
         app:showAsAction="never" />
     <item
         android:id="@+id/exit"
-        android:title="@string/exit"
+        android:title="@string/menuExit"
         android:orderInCategory="5"
         app:showAsAction="never" />
 </menu>
