@@ -45,43 +45,43 @@ public class MyOpener extends SQLiteOpenHelper {
     }
 
     //Load data from the database and return a list of saved dates
-    public List<favourite_DateAdapter> loadData() {
-        List<favourite_DateAdapter> SavedDates = new ArrayList<>();
-        SQLiteDatabase db = getWritableDatabase();
-
-        String[] columns = {MyOpener.COL_ID, COL_DATE, FAVOURITE};
-        Cursor results = db.query(false, TABLE_NAME, columns, null, null, null, null, null, null);
-
-        int IDColumnIndex = results.getColumnIndex(COL_ID);
-        int DateColumnIndex = results.getColumnIndex(COL_DATE);
-        int FavouriteColumnIndex = results.getColumnIndex(FAVOURITE);
-
-        //Iterate through the database results and create saved date objects
-        while (results.moveToNext()) {
-            int ID = results.getInt(IDColumnIndex);
-            String Date = results.getString(DateColumnIndex);
-            int FavouriteInt = results.getInt(FavouriteColumnIndex);
-            boolean isFavourite = (FavouriteInt == 1);
-
-            String nasaPictureUrl = favourite_date_list.getNasaPictureUrl(Date);
-
-            favourite_DateAdapter savedDate = new favourite_DateAdapter(ID, Date, isFavourite, nasaPictureUrl);
-            SavedDates.add(savedDate);
-        }
-        return SavedDates;
-    }
-
-    //Add a date to the database
-    public void addToDB(String date, boolean isFavourite, String nasaPictureUrl) {
-        SQLiteDatabase db = getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(COL_DATE, date);
-        values.put(FAVOURITE, isFavourite ? 1 : 0);
-        values.put(COL_URL, nasaPictureUrl);
-
-        db.insert(TABLE_NAME, null, values);
-        db.close();
-    }
+//    public List<favourite_DateAdapter> loadData() {
+//        List<favourite_DateAdapter> SavedDates = new ArrayList<>();
+//        SQLiteDatabase db = getWritableDatabase();
+//
+//        String[] columns = {MyOpener.COL_ID, COL_DATE, FAVOURITE};
+//        Cursor results = db.query(false, TABLE_NAME, columns, null, null, null, null, null, null);
+//
+//        int IDColumnIndex = results.getColumnIndex(COL_ID);
+//        int DateColumnIndex = results.getColumnIndex(COL_DATE);
+//        int FavouriteColumnIndex = results.getColumnIndex(FAVOURITE);
+//
+//        //Iterate through the database results and create saved date objects
+//        while (results.moveToNext()) {
+//            int ID = results.getInt(IDColumnIndex);
+//            String Date = results.getString(DateColumnIndex);
+//            int FavouriteInt = results.getInt(FavouriteColumnIndex);
+//            boolean isFavourite = (FavouriteInt == 1);
+//
+//            String nasaPictureUrl = favourite_date_list.getNasaPictureUrl(Date);
+//
+//            favourite_DateAdapter savedDate = new favourite_DateAdapter(ID, Date, isFavourite, nasaPictureUrl);
+//            SavedDates.add(savedDate);
+//        }
+//        return SavedDates;
+//    }
+//
+//    //Add a date to the database
+//    public void addToDB(String date, boolean isFavourite, String nasaPictureUrl) {
+//        SQLiteDatabase db = getWritableDatabase();
+//        ContentValues values = new ContentValues();
+//        values.put(COL_DATE, date);
+//        values.put(FAVOURITE, isFavourite ? 1 : 0);
+//        values.put(COL_URL, nasaPictureUrl);
+//
+//        db.insert(TABLE_NAME, null, values);
+//        db.close();
+//    }
 
     //Delete a date from the database by ID
     public void deleteFromDB(int ID) {

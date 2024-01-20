@@ -10,6 +10,11 @@
     <string name="menuPicRoulette" translatable="false">Picture Roulette</string>
     <string name="menuExit" translatable="false">Exit</string>
 
+    <!-- Image of the Day Strings -->
+    <string name="placeholder">Type Here</string>
+
+    <!-- Image Roulette Strings -->
+
     <!-- -->
     <string name="type_here">Type Here</string>
     <string name="Favourite">Favourite</string>
