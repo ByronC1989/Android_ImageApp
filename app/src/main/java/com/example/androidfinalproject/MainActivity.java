@@ -55,9 +55,9 @@ public class MainActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         String message = null;
 
-        if (item.getItemId() == R.id.title1) {
+        if (item.getItemId() == R.id.home) {
             message = "the title";
-        } else if (item.getItemId() == R.id.title2) {
+        } else if (item.getItemId() == R.id.profile) {
             message = "the title!";
         }
 
@@ -73,18 +73,23 @@ public class MainActivity extends BaseActivity {
     public boolean onNavigationItemSelected(MenuItem item) {
         String message = null;
         //on click
-        if (item.getItemId() == R.id.title1) {
-            message = "title 1";
+        if (item.getItemId() == R.id.home) {
+            message = "Home";
             //take to wherever we line this up to
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             //take to wherever we line this up to
-        } else if (item.getItemId() == R.id.title2) {
-            message = "title 2";
+        } else if (item.getItemId() == R.id.picOfTheDay) {
+            message = "Picture of the Day";
             Intent titleIntent = new Intent(this, ImageOfTheDay.class);
             startActivity(titleIntent);
-            //exit
-        } else if (item.getItemId() == R.id.exit) {
+        } else if (item.getItemId() == R.id.picRoulette) {
+            // brings you to picture roulette
+            message = "Picture Roulette";
+            Intent rouletteIntent = new Intent(this, PictureRoulette.class);
+            startActivity(rouletteIntent);
+        }else if (item.getItemId() == R.id.exit) {
+            // exit application
             message = "Exit";
             finishAffinity();
         }
