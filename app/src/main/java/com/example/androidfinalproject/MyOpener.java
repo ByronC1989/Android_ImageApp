@@ -14,83 +14,88 @@ public class MyOpener extends SQLiteOpenHelper {
     protected static String DATABASE_NAME = "NasaDB";
     protected static int VERSION_NUM = 1;
     public static String TABLE_NAME = "NASA_IMAGES";
-    public static String COL_ID = "ID";
     public static String COL_DATE = "date";
     public static String COL_URL = "url";
     public static String COL_HDURL = "hd_url";
     public static String COL_FILEPATH = "filepath";
-    public static String COL_TITLE = "filepath";
-
+    public static String COL_TITLE = "title";
     public MyOpener(Context ctx) {
         super(ctx, DATABASE_NAME, null, VERSION_NUM);
     }
-
     //Called when the database is created
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + TABLE_NAME + "("
-                + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + COL_DATE + " TEXT,"
                 + COL_URL + " TEXT,"
-                + COL_TITLE + "TEXT,"
-                + COL_FILEPATH + "TEXT,"
+                + COL_TITLE + " TEXT,"
+                + COL_FILEPATH + " TEXT,"
                 + COL_HDURL + " TEXT);");
     }
 
-    //Called when the database needs to be upgraded
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
     }
 
-    //Load data from the database and return a list of saved dates
-    public List<favourite_DateAdapter> loadData() {
-        List<favourite_DateAdapter> SavedDates = new ArrayList<>();
+    // Load data from the database and return a list of saved dates
+    public List<NasaImage> loadData() {
+        List<NasaImage> SavedDates = new ArrayList<>();
         SQLiteDatabase db = getWritableDatabase();
 
-        String[] columns = {MyOpener.COL_ID, COL_DATE, FAVOURITE};
+        String[] columns = {COL_DATE, COL_TITLE, COL_FILEPATH, COL_URL,COL_HDURL};
         Cursor results = db.query(false, TABLE_NAME, columns, null, null, null, null, null, null);
 
-        int IDColumnIndex = results.getColumnIndex(COL_ID);
         int DateColumnIndex = results.getColumnIndex(COL_DATE);
-        int FavouriteColumnIndex = results.getColumnIndex(FAVOURITE);
+        int TitleColumnIndex = results.getColumnIndex(COL_TITLE);
+        int FilePathColumnIndex = results.getColumnIndex(COL_FILEPATH);
+        int UrlColumnIndex = results.getColumnIndex(COL_URL);
+        int HdUrlColumnIndex = results.getColumnIndex(COL_HDURL);
 
-        //Iterate through the database results and create saved date objects
+
+
+        // Iterate through the database results and create saved date objects
         while (results.moveToNext()) {
-            int ID = results.getInt(IDColumnIndex);
             String Date = results.getString(DateColumnIndex);
-            int FavouriteInt = results.getInt(FavouriteColumnIndex);
-            boolean isFavourite = (FavouriteInt == 1);
+            String Title = results.getString(TitleColumnIndex);
+            String FilePath = results.getString(FilePathColumnIndex);
+            String Url = results.getString(UrlColumnIndex);
+            String HdUrl = results.getString(HdUrlColumnIndex);
 
-            String nasaPictureUrl = favourite_date_list.getNasaPictureUrl(Date);
 
-            favourite_DateAdapter savedDate = new favourite_DateAdapter(ID, Date, isFavourite, nasaPictureUrl);
+            NasaImage savedDate = new NasaImageBuilder().setDate(Date).setUrl(Title).setHdUrl(HdUrl).setTitle(FilePath).setFilePath(Url).createNasaImage();
             SavedDates.add(savedDate);
         }
+        results.close();
+        db.close();
         return SavedDates;
     }
 
-    //Add a date to the database
-    public void addToDB(String date, boolean isFavourite, String nasaPictureUrl) {
+    // Add a date to the database
+    public void addToDB(String date, String title, String filepath, String url) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COL_DATE, date);
-        values.put(FAVOURITE, isFavourite ? 1 : 0);
-        values.put(COL_URL, nasaPictureUrl);
+        values.put(COL_TITLE, title);
+        values.put(COL_FILEPATH, filepath);
+        values.put(COL_URL, url);
 
         db.insert(TABLE_NAME, null, values);
+        Cursor cursor = db.query(TABLE_NAME, null, null, null, null, null, null);
+        printCursor(cursor);
+        cursor.close();
         db.close();
     }
 
-    //Delete a date from the database by ID
-    public void deleteFromDB(int ID) {
+    // Delete a date from the database by Date
+    public void deleteFromDB(String Date) {
         SQLiteDatabase db = getWritableDatabase();
-        db.delete(TABLE_NAME, COL_DATE + "=?", new String[]{String.valueOf(ID)});
+        db.delete(TABLE_NAME, COL_DATE + "=?", new String[]{String.valueOf(Date)});
         db.close();
     }
 
-    // print cursor information for debugging
+    // Print cursor information for debugging
     public void printCursor(Cursor cursor) {
         SQLiteDatabase db = getWritableDatabase();
         Log.d("Opener", "Database Version: " + db.getVersion());

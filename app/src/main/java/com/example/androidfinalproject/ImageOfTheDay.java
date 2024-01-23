@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,7 +23,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -68,8 +68,15 @@ public class ImageOfTheDay extends AppCompatActivity implements DatePickerDialog
         });
 
         // Save to favourites.
-        btnSave.setOnClickListener( click -> {
-            // Implement save to database
+        btnSave.setOnClickListener(click -> {
+            if (nasa != null) {
+                MyOpener myOpener = new MyOpener(this);
+                myOpener.addToDB(nasa.getDate(), nasa.getTitle(), "", nasa.getUrl());
+                Toast.makeText(ImageOfTheDay.this, "Data saved to database", Toast.LENGTH_SHORT).show();
+                myOpener.close();
+            } else {
+                Toast.makeText(ImageOfTheDay.this, "No data to save", Toast.LENGTH_SHORT).show();
+            }
         });
 
         // get name of activity test
@@ -142,7 +149,7 @@ public class ImageOfTheDay extends AppCompatActivity implements DatePickerDialog
                 Log.d("appName", "image: " + imageOfDay);
 
                 // create NasaImage objects
-                nasa = new NasaImage();
+                nasa = new NasaImageBuilder().createNasaImage();
                 nasa.setDate(date);
                 nasa.setTitle(title);
                 nasa.setUrl(regUrl);
