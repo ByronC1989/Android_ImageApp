@@ -71,7 +71,7 @@ public class ImageOfTheDay extends AppCompatActivity implements DatePickerDialog
         btnSave.setOnClickListener(click -> {
             if (nasa != null) {
                 MyOpener myOpener = new MyOpener(this);
-                myOpener.addToDB(nasa.getDate(), nasa.getTitle(), "", nasa.getUrl());
+                myOpener.addToDB(nasa.getDate(), nasa.getTitle(), "", nasa.getUrl(), nasa.getHdUrl());
                 Toast.makeText(ImageOfTheDay.this, "Data saved to database", Toast.LENGTH_SHORT).show();
                 myOpener.close();
             } else {

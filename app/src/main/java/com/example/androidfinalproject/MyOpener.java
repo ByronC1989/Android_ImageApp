@@ -73,13 +73,14 @@ public class MyOpener extends SQLiteOpenHelper {
     }
 
     // Add a date to the database
-    public void addToDB(String date, String title, String filepath, String url) {
+    public void addToDB(String date, String title, String filepath, String url, String hdUrl) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COL_DATE, date);
         values.put(COL_TITLE, title);
         values.put(COL_FILEPATH, filepath);
         values.put(COL_URL, url);
+        values.put(COL_HDURL, hdUrl);
 
         db.insert(TABLE_NAME, null, values);
         Cursor cursor = db.query(TABLE_NAME, null, null, null, null, null, null);

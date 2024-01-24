@@ -82,7 +82,7 @@ public class PictureRoulette extends AppCompatActivity {
         btnSave.setOnClickListener( click -> {
             if (nasa != null) {
                 MyOpener myOpener = new MyOpener(this);
-                myOpener.addToDB(nasa.getDate(), nasa.getTitle(), "", nasa.getUrl());
+                myOpener.addToDB(nasa.getDate(), nasa.getTitle(), "", nasa.getUrl(), nasa.getHdUrl());
                 Toast.makeText(PictureRoulette.this, "Data saved to database", Toast.LENGTH_SHORT).show();
                 myOpener.close();
             } else {
@@ -169,6 +169,8 @@ public class PictureRoulette extends AppCompatActivity {
                     nasa.setUrl(regUrl);
                     if (hdUrl != null){
                         nasa.setHdUrl(hdUrl);
+                    } else {
+                        hdUrl = "None";
                     }
                     nasa.setImage(imageOfDay);
 
