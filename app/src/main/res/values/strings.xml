@@ -11,6 +11,11 @@
     <string name="menuFavouritePic" translatable="false">Favourites</string>
     <string name="menuExit" translatable="false">Exit</string>
 
+    <!-- Alert box-->
+    <string name="dialog_title" translatable="false">Warning</string>
+    <string name="dialog_msg" translatable="false">This will open your browser!</string>
+    <string name="btn_yes" translatable="false">Yes</string>
+    <string name="btn_no" translatable="false">No</string>
 
     <!-- Image of the Day Strings -->
     <string name="placeholder">Type Here</string>
