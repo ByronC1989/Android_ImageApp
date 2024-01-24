@@ -93,6 +93,11 @@ public class MainActivity extends BaseActivity {
             message = "Profile";
             Intent profileIntent = new Intent(this, ProfileActivity.class);
             startActivity(profileIntent);
+        } else if (item.getItemId() == R.id.favouritePic) {
+            // brings you to profile
+            message = "favouritePic";
+            Intent favouriteIntent = new Intent(this, favourite_date_list.class);
+            startActivity(favouriteIntent);
         } else if (item.getItemId() == R.id.exit) {
             // exit application
             message = "Exit";
