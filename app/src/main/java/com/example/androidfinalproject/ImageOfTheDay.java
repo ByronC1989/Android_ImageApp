@@ -94,11 +94,12 @@ public class ImageOfTheDay extends AppCompatActivity implements DatePickerDialog
 
         String displayDate = DateFormat.getDateInstance().format(c.getTime());
         // formated date for JSON
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-dd-MM");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         datePicked = format.format(c.getTime());
 
         NasaPictures req = new NasaPictures();
         req.execute("https://api.nasa.gov/planetary/apod?api_key=DgPLcIlnmN0Cwrzcg3e9NraFaYLIDI68Ysc6Zh3d&date=" + datePicked);
+        Log.d("appName", "https://api.nasa.gov/planetary/apod?api_key=DgPLcIlnmN0Cwrzcg3e9NraFaYLIDI68Ysc6Zh3d&date=" + datePicked);
 
         tvDate = findViewById(R.id.tv_Date);
         tvDate.setText(displayDate);
