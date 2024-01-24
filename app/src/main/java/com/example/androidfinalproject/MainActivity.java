@@ -75,10 +75,10 @@ public class MainActivity extends BaseActivity {
         //on click
         if (item.getItemId() == R.id.home) {
             message = "Home";
-            //take to wherever we line this up to
+            // brings you to main page
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
-            //take to wherever we line this up to
+            // brings you to picture of the day
         } else if (item.getItemId() == R.id.picOfTheDay) {
             message = "Picture of the Day";
             Intent titleIntent = new Intent(this, ImageOfTheDay.class);
@@ -88,7 +88,12 @@ public class MainActivity extends BaseActivity {
             message = "Picture Roulette";
             Intent rouletteIntent = new Intent(this, PictureRoulette.class);
             startActivity(rouletteIntent);
-        }else if (item.getItemId() == R.id.exit) {
+        } else if (item.getItemId() == R.id.profile) {
+            // brings you to profile
+            message = "Profile";
+            Intent profileIntent = new Intent(this, ProfileActivity.class);
+            startActivity(profileIntent);
+        } else if (item.getItemId() == R.id.exit) {
             // exit application
             message = "Exit";
             finishAffinity();
