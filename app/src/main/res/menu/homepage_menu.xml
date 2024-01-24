@@ -22,6 +22,11 @@
         android:orderInCategory="5"
         app:showAsAction="never" />
     <item
+        android:id="@+id/favouritePic"
+        android:title="@string/menuFavouritePic"
+        android:orderInCategory="5"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/exit"
         android:title="@string/menuExit"
         android:orderInCategory="5"

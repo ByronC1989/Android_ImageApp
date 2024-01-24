@@ -99,7 +99,6 @@ public class ImageOfTheDay extends AppCompatActivity implements DatePickerDialog
 
         NasaPictures req = new NasaPictures();
         req.execute("https://api.nasa.gov/planetary/apod?api_key=DgPLcIlnmN0Cwrzcg3e9NraFaYLIDI68Ysc6Zh3d&date=" + datePicked);
-        Log.d("appName", "https://api.nasa.gov/planetary/apod?api_key=DgPLcIlnmN0Cwrzcg3e9NraFaYLIDI68Ysc6Zh3d&date=" + datePicked);
 
         tvDate = findViewById(R.id.tv_Date);
         tvDate.setText(displayDate);
@@ -147,8 +146,6 @@ public class ImageOfTheDay extends AppCompatActivity implements DatePickerDialog
 
                 imageOfDay = BitmapFactory.decodeStream(nasaConnection.getInputStream());
 
-                Log.d("appName", "image: " + imageOfDay);
-
                 // create NasaImage objects
                 nasa = new NasaImageBuilder().createNasaImage();
                 nasa.setDate(date);
@@ -165,7 +162,6 @@ public class ImageOfTheDay extends AppCompatActivity implements DatePickerDialog
         @Override
         protected void onPostExecute(String s) {
             ivNasa.setImageBitmap(nasa.getImage());
-            Log.d("appName", "url " + nasa.getUrl());
             tvURL.setText("URL: " + nasa.getUrl());
             tvHdURL.setText("HD Url: " + nasa.getHdUrl());
             tvTitle.setText(nasa.getTitle());

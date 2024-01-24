@@ -38,8 +38,6 @@ public class PictureRoulette extends AppCompatActivity {
     // View and Button Variables.
     Button btnStart;
     Button btnSave;
-    TextView tvURL;
-    TextView tvHdURL;
     TextView tvTitle;
     ProgressBar progress;
 
@@ -84,6 +82,7 @@ public class PictureRoulette extends AppCompatActivity {
                 MyOpener myOpener = new MyOpener(this);
                 myOpener.addToDB(nasa.getDate(), nasa.getTitle(), "", nasa.getUrl(), nasa.getHdUrl());
                 Toast.makeText(PictureRoulette.this, "Data saved to database", Toast.LENGTH_SHORT).show();
+                // add undo
                 myOpener.close();
             } else {
                 Toast.makeText(PictureRoulette.this, "No data to save", Toast.LENGTH_SHORT).show();
@@ -108,8 +107,6 @@ public class PictureRoulette extends AppCompatActivity {
         LocalDate randomDate = LocalDate.ofEpochDay(randomDay);
         // format date to be added to URL of Nasa API
         datePicked = randomDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-
-        Log.d("roulettePic", randomDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
 
         return datePicked;
     }
@@ -160,8 +157,6 @@ public class PictureRoulette extends AppCompatActivity {
 
                     imageOfDay = BitmapFactory.decodeStream(nasaConnection.getInputStream());
 
-                    Log.d("appName", "image: " + imageOfDay);
-
                     // create NasaImage objects
                     nasa = new NasaImageBuilder().createNasaImage();
                     nasa.setDate(date);
@@ -198,17 +193,5 @@ public class PictureRoulette extends AppCompatActivity {
             ivNasa.setImageBitmap(nasa.getImage());
             tvTitle.setText(nasa.getTitle());
         }
-
-//        @Override
-//        protected void onPostExecute(String s) {
-//            if(nasa != null) {
-//                ivNasa.setImageBitmap(nasa.getImage());
-//                Log.d("appName", "url " + nasa.getUrl());
-//                tvTitle.setText(nasa.getTitle());
-//            } else {
-//                tvTitle.setText("Oppsies");
-//            }
-//
-//        }
     }
 }
