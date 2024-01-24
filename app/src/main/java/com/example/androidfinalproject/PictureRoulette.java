@@ -198,17 +198,5 @@ public class PictureRoulette extends AppCompatActivity {
             ivNasa.setImageBitmap(nasa.getImage());
             tvTitle.setText(nasa.getTitle());
         }
-
-//        @Override
-//        protected void onPostExecute(String s) {
-//            if(nasa != null) {
-//                ivNasa.setImageBitmap(nasa.getImage());
-//                Log.d("appName", "url " + nasa.getUrl());
-//                tvTitle.setText(nasa.getTitle());
-//            } else {
-//                tvTitle.setText("Oppsies");
-//            }
-//
-//        }
     }
 }

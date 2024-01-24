@@ -19,6 +19,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -72,7 +74,8 @@ public class ImageOfTheDay extends AppCompatActivity implements DatePickerDialog
             if (nasa != null) {
                 MyOpener myOpener = new MyOpener(this);
                 myOpener.addToDB(nasa.getDate(), nasa.getTitle(), "", nasa.getUrl(), nasa.getHdUrl());
-                Toast.makeText(ImageOfTheDay.this, "Data saved to database", Toast.LENGTH_SHORT).show();
+                saveToFile(nasa);
+                Toast.makeText(ImageOfTheDay.this, "Data saved to database and file", Toast.LENGTH_SHORT).show();
                 myOpener.close();
             } else {
                 Toast.makeText(ImageOfTheDay.this, "No data to save", Toast.LENGTH_SHORT).show();
@@ -83,6 +86,34 @@ public class ImageOfTheDay extends AppCompatActivity implements DatePickerDialog
         String activity = this.getClass().getSimpleName();
         Log.e("appName", "Activity Name: " + activity);
 
+    }
+    private void saveToFile(NasaImage nasa) {
+        if (nasa != null) {
+            try {
+
+                File nasaDirectory = new File(getFilesDir(), "nasa");
+                if (!nasaDirectory.exists()) {
+                    nasaDirectory.mkdirs();
+                }
+
+                String fileName = "nasa_image_" + nasa.getDate() + ".txt";
+                File file = new File(nasaDirectory, fileName);
+
+                String fileContents = "Date: " + nasa.getDate() + "\n" +
+                        "Title: " + nasa.getTitle() + "\n" +
+                        "URL: " + nasa.getUrl() + "\n" +
+                        "HD URL: " + nasa.getHdUrl();
+
+                FileOutputStream fos = new FileOutputStream(file);
+                fos.write(fileContents.getBytes());
+                fos.close();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            Toast.makeText(ImageOfTheDay.this, "No data to save", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

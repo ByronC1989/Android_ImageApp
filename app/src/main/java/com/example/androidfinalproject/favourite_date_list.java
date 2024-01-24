@@ -45,7 +45,7 @@ public class favourite_date_list extends AppCompatActivity {
             SavedDateList.add(savedDate);
 
             // Add the new date to the database
-            myOpener.addToDB(date, "", "", getNasaPictureUrl(date));
+            myOpener.addToDB(date,"", "", getNasaPictureUrl(date),"");
 
             // Update the ListView
             NasaImage.notifyDataSetChanged();
