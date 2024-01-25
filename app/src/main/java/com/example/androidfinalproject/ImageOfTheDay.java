@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -49,6 +50,11 @@ public class ImageOfTheDay extends AppCompatActivity implements DatePickerDialog
     private String datePicked;
 
     private NasaImage nasa;
+    private Bitmap image;
+    private Bitmap imageOfDay;
+    private String regUrl;
+    private String hdUrl;
+    private String title;
 
 
     @Override
@@ -78,8 +84,7 @@ public class ImageOfTheDay extends AppCompatActivity implements DatePickerDialog
             if (nasa != null) {
 
                 MyOpener myOpener = new MyOpener(this);
-                myOpener.addToDB(nasa.getDate(), nasa.getTitle(), "", nasa.getUrl(), nasa.getHdUrl());
-                saveToFile(nasa);
+                myOpener.addToDB(nasa.getDate(), nasa.getTitle(), saveToFile(nasa), nasa.getUrl(), nasa.getHdUrl());
                 Toast.makeText(ImageOfTheDay.this, "Data saved to database and file", Toast.LENGTH_SHORT).show();
                 myOpener.close();
             } else {
@@ -110,28 +115,20 @@ public class ImageOfTheDay extends AppCompatActivity implements DatePickerDialog
         Log.e("appName", "Activity Name: " + activity);
 
     }
-    private void saveToFile(NasaImage nasa) {
+    private String saveToFile(NasaImage nasa) {
+        String fileName = "";
+
         if (nasa != null) {
             try {
+                fileName = "nasa_image_" + nasa.getDate() + ".jpeg";
+                image = nasa.getImage();
+                FileOutputStream outputStream = openFileOutput(fileName, Context.MODE_PRIVATE);
+                image.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+                nasa.setFilePath(fileName);
+                outputStream.flush();
+                outputStream.close();
 
-                File nasaDirectory = new File(getFilesDir(), "nasa");
-                if (!nasaDirectory.exists()) {
-                    nasaDirectory.mkdirs();
-                }
-
-                String fileName = "nasa_image_" + nasa.getDate() + ".txt";
-                File file = new File(nasaDirectory, fileName);
-
-                String fileContents = "Date: " + nasa.getDate() + "\n" +
-                        "Title: " + nasa.getTitle() + "\n" +
-                        "URL: " + nasa.getUrl() + "\n" +
-                        "HD URL: " + nasa.getHdUrl();
-
-                FileOutputStream fos = new FileOutputStream(file);
-                fos.write(fileContents.getBytes());
-                fos.close();
-
-                Log.d("NasaImageFilePath", getBaseContext().getFileStreamPath(fileName).toString());
+               return fileName;
 
             } catch (IOException e) {
 
@@ -140,6 +137,7 @@ public class ImageOfTheDay extends AppCompatActivity implements DatePickerDialog
         } else {
             Toast.makeText(ImageOfTheDay.this, "No data to save", Toast.LENGTH_SHORT).show();
         }
+        return fileName;
     }
 
     @Override
@@ -163,10 +161,6 @@ public class ImageOfTheDay extends AppCompatActivity implements DatePickerDialog
 
     private class NasaPictures extends AsyncTask<String, Integer, String> {
 
-        Bitmap imageOfDay;
-        String regUrl;
-        String hdUrl;
-        String title;
         @Override
         protected String doInBackground(String... strings) {
 

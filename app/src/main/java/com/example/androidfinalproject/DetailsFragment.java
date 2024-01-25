@@ -1,7 +1,9 @@
 package com.example.androidfinalproject;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -16,6 +18,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+
 public class DetailsFragment extends Fragment {
 
     private Bundle dataFromActivity;
@@ -24,6 +29,7 @@ public class DetailsFragment extends Fragment {
     private TextView date;
     private ImageView image;
     private Bitmap nasaPic;
+    String filepath;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -40,8 +46,18 @@ public class DetailsFragment extends Fragment {
         date.setText(dataFromActivity.getString("date"));
 
         image = result.findViewById(R.id.iv_Nasa);
+        filepath = dataFromActivity.getString("filePath");
 
-        //image.setImageBitmap();
+        try {
+
+            FileInputStream inputStream = getActivity().openFileInput(filepath);
+            nasaPic = BitmapFactory.decodeStream(inputStream);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        image.setImageBitmap(nasaPic);
 
         // open HD link in browser
         btnHD = result.findViewById(R.id.btnHD);
