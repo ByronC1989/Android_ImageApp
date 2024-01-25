@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ProfileActivity">
 
-    <!-- Adds toolbar layout to activity -->
-
+    <!-- Add toolbar needs to be last in layout -->
     <include
         android:id="@+id/include"
         layout="@layout/toolbar_layout" />
@@ -87,6 +86,8 @@
             android:layout_height="wrap_content"
             android:text="@string/radio3" />
     </RadioGroup>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

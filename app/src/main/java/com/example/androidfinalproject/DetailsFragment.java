@@ -49,7 +49,7 @@ public class DetailsFragment extends Fragment {
         filepath = dataFromActivity.getString("filePath");
 
         try {
-
+            // set Image View to saved file.
             FileInputStream inputStream = getActivity().openFileInput(filepath);
             nasaPic = BitmapFactory.decodeStream(inputStream);
 
