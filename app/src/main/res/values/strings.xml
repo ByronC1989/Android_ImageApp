@@ -12,14 +12,30 @@
     <string name="menuExit" translatable="false">Exit</string>
     <string name="help" translatable="false">Help</string>
 
+    <!-- Main Activity Strings -->
+
+    <!-- Alert box-->
+    <string name="dialog_title" translatable="false">Warning</string>
+    <string name="dialog_msg" translatable="false">This will open your browser!</string>
+    <string name="btn_yes" translatable="false">Yes</string>
+    <string name="btn_no" translatable="false">No</string>
 
     <!-- Image of the Day Strings -->
-    <string name="placeholder">Type Here</string>
+    <string name="browser_msg">Click the button below to be brought to the HD Image.</string>
+    <string name="btn_hd">HD Image</string>
+    <string name="btn_datePicker">Pick a date</string>
+    <string name="btn_save">Save Image</string>
 
     <!-- Image Roulette Strings -->
+    <string name="btn_roulette">Start Roulette!</string>
 
-    <!-- -->
-    <string name="type_here">Type Here</string>
-    <string name="Favourite">Favourite</string>
-    <string name="add">Add</string>
+    <!-- Profile -->
+    <string name="name_msg">Please enter your user name below:</string>
+    <string name="avatar_msg">Please pick a Avatar below:</string>
+    <string name="btn_profileSave">Save</string>
+    <string name="profile_name">Name</string>
+    <string name="radio1">RadioButton1</string>
+    <string name="radio2">RadioButton2</string>
+    <string name="radio3">RadioButton3</string>
+
 </resources>

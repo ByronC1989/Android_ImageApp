@@ -10,15 +10,13 @@
 
     <include
         android:id="@+id/include"
-        layout="@layout/toolbar_main"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+        layout="@layout/toolbar_layout" />
 
     <TextView
         android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Please enter your user name below:"
+        android:text="@string/name_msg"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,7 +27,7 @@
         android:id="@+id/tvAvatar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Please pick a Avatar below:"
+        android:text="@string/avatar_msg"
         android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/radioGroup"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +37,7 @@
         android:id="@+id/btnSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save"
+        android:text="@string/btn_profileSave"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -51,7 +49,7 @@
         android:minHeight="48dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Name"
+        android:text="@string/profile_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvName" />
@@ -75,19 +73,19 @@
             android:id="@+id/radioImage1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="RadioButton" />
+            android:text="@string/radio1" />
 
         <RadioButton
             android:id="@+id/radioImage2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="RadioButton" />
+            android:text="@string/radio2" />
 
         <RadioButton
             android:id="@+id/radioImage3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="RadioButton" />
+            android:text="@string/radio3" />
     </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,11 +1,15 @@
 package com.example.androidfinalproject;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,18 +37,24 @@ import java.util.Calendar;
 public class ImageOfTheDay extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     // View and Button Variables.
-    TextView tvDate;
-    TextView tvURL;
-    TextView tvHdURL;
-    TextView tvTitle;
+    private TextView tvDate;
+    private TextView tvURL;
+    private TextView tvHdURL;
+    private TextView tvTitle;
 
-    ImageView ivNasa;
+    private ImageView ivNasa;
 
-    Button btnDate;
-    Button btnSave;
-    String datePicked;
+    private Button btnDate;
+    private Button btnSave;
+    private Button btnHD;
+    private String datePicked;
 
-    NasaImage nasa;
+    private NasaImage nasa;
+    private Bitmap image;
+    private Bitmap imageOfDay;
+    private String regUrl;
+    private String hdUrl;
+    private String title;
 
 
     @Override
@@ -55,10 +65,10 @@ public class ImageOfTheDay extends AppCompatActivity implements DatePickerDialog
         // Declare Buttons
         btnDate = findViewById(R.id.btn_date);
         btnSave = findViewById(R.id.btn_save);
+        btnHD = findViewById(R.id.btnHD);
 
         // Declare TextViews
         ivNasa = findViewById(R.id.iv_Nasa);
-        tvURL = findViewById(R.id.tv_URL);
         tvHdURL = findViewById(R.id.tv_HdURL);
         tvTitle = findViewById(R.id.tv_Title);
 
@@ -72,14 +82,32 @@ public class ImageOfTheDay extends AppCompatActivity implements DatePickerDialog
         // Save to favourites.
         btnSave.setOnClickListener(click -> {
             if (nasa != null) {
+
                 MyOpener myOpener = new MyOpener(this);
-                myOpener.addToDB(nasa.getDate(), nasa.getTitle(), "", nasa.getUrl(), nasa.getHdUrl());
-                saveToFile(nasa);
+                myOpener.addToDB(nasa.getDate(), nasa.getTitle(), saveToFile(nasa), nasa.getUrl(), nasa.getHdUrl());
                 Toast.makeText(ImageOfTheDay.this, "Data saved to database and file", Toast.LENGTH_SHORT).show();
                 myOpener.close();
             } else {
+
                 Toast.makeText(ImageOfTheDay.this, "No data to save", Toast.LENGTH_SHORT).show();
             }
+        });
+
+        // open HD link in browser
+        btnHD.setOnClickListener(click -> {
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+            alertDialogBuilder.setTitle(getResources().getString(R.string.dialog_title))
+
+                    .setMessage(getResources().getString(R.string.dialog_msg))
+
+                    .setPositiveButton(getResources().getString(R.string.btn_yes), ( clicked, arg) -> {
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(nasa.getHdUrl()));
+                        startActivity(browserIntent);
+                    })
+
+                    .setNegativeButton(getResources().getString(R.string.btn_no), ( clicked, arg) -> { })
+
+                    .create().show();
         });
 
         // get name of activity test
@@ -87,33 +115,29 @@ public class ImageOfTheDay extends AppCompatActivity implements DatePickerDialog
         Log.e("appName", "Activity Name: " + activity);
 
     }
-    private void saveToFile(NasaImage nasa) {
+    private String saveToFile(NasaImage nasa) {
+        String fileName = "";
+
         if (nasa != null) {
             try {
+                fileName = "nasa_image_" + nasa.getDate() + ".jpeg";
+                image = nasa.getImage();
+                FileOutputStream outputStream = openFileOutput(fileName, Context.MODE_PRIVATE);
+                image.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+                nasa.setFilePath(fileName);
+                outputStream.flush();
+                outputStream.close();
 
-                File nasaDirectory = new File(getFilesDir(), "nasa");
-                if (!nasaDirectory.exists()) {
-                    nasaDirectory.mkdirs();
-                }
-
-                String fileName = "nasa_image_" + nasa.getDate() + ".txt";
-                File file = new File(nasaDirectory, fileName);
-
-                String fileContents = "Date: " + nasa.getDate() + "\n" +
-                        "Title: " + nasa.getTitle() + "\n" +
-                        "URL: " + nasa.getUrl() + "\n" +
-                        "HD URL: " + nasa.getHdUrl();
-
-                FileOutputStream fos = new FileOutputStream(file);
-                fos.write(fileContents.getBytes());
-                fos.close();
+               return fileName;
 
             } catch (IOException e) {
+
                 e.printStackTrace();
             }
         } else {
             Toast.makeText(ImageOfTheDay.this, "No data to save", Toast.LENGTH_SHORT).show();
         }
+        return fileName;
     }
 
     @Override
@@ -137,10 +161,6 @@ public class ImageOfTheDay extends AppCompatActivity implements DatePickerDialog
 
     private class NasaPictures extends AsyncTask<String, Integer, String> {
 
-        Bitmap imageOfDay;
-        String regUrl;
-        String hdUrl;
-        String title;
         @Override
         protected String doInBackground(String... strings) {
 
@@ -182,7 +202,11 @@ public class ImageOfTheDay extends AppCompatActivity implements DatePickerDialog
                 nasa.setDate(date);
                 nasa.setTitle(title);
                 nasa.setUrl(regUrl);
-                nasa.setHdUrl(hdUrl);
+                if (hdUrl != null){
+                    nasa.setHdUrl(hdUrl);
+                } else {
+                    hdUrl = "None";
+                }
                 nasa.setImage(imageOfDay);
 
             } catch (IOException | JSONException e) {
@@ -193,8 +217,6 @@ public class ImageOfTheDay extends AppCompatActivity implements DatePickerDialog
         @Override
         protected void onPostExecute(String s) {
             ivNasa.setImageBitmap(nasa.getImage());
-            tvURL.setText("URL: " + nasa.getUrl());
-            tvHdURL.setText("HD Url: " + nasa.getHdUrl());
             tvTitle.setText(nasa.getTitle());
         }
     }

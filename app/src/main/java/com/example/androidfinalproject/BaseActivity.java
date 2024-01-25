@@ -22,10 +22,10 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.toolbar_main);
+        setContentView(R.layout.toolbar_layout);
 
         // Get Toolbar Layout
-        Toolbar tBar = findViewById(R.id.toolbar);
+        Toolbar tBar = findViewById(R.id.home_toolbar);
 
         // load toolbar
         setSupportActionBar(tBar);

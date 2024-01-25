@@ -64,7 +64,7 @@ public class MyOpener extends SQLiteOpenHelper {
             String HdUrl = results.getString(HdUrlColumnIndex);
 
 
-            NasaImage savedDate = new NasaImageBuilder().setDate(Date).setUrl(Title).setHdUrl(HdUrl).setTitle(FilePath).setFilePath(Url).createNasaImage();
+            NasaImage savedDate = new NasaImageBuilder().setDate(Date).setUrl(Url).setHdUrl(HdUrl).setTitle(Title).setFilePath(FilePath).createNasaImage();
             SavedDates.add(savedDate);
         }
         results.close();
