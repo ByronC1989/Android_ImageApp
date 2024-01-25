@@ -37,26 +37,23 @@ public class ProfileActivity extends AppCompatActivity {
         uname.setText(savedName);
 
         // set avatar
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
+        radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
 
-                RadioButton radioButton = group.findViewById(checkedId);
+            RadioButton radioButton = group.findViewById(checkedId);
 
-                Log.d("avatar", radioButton.getText() + "");
+            Log.d("avatar", radioButton.getText() + "");
 
-                if(radioButton.getText() == "RadioButton1") {
-                    // update image view
-                    // avatar.setImageDrawable();
-                } else if(radioButton.getText() == "RadioButton2") {
-                    // update image view
-                    // avatar.setImageDrawable();
-                } else {
-                    // update image view
-                    // avatar.setImageDrawable();
-                }
-
+            if(radioButton.getText() == "RadioButton1") {
+                // update image view
+                // avatar.setImageDrawable();
+            } else if(radioButton.getText() == "RadioButton2") {
+                // update image view
+                // avatar.setImageDrawable();
+            } else {
+                // update image view
+                // avatar.setImageDrawable();
             }
+
         });
 
 
