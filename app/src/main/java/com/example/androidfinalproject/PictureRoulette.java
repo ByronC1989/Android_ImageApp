@@ -1,9 +1,9 @@
 package com.example.androidfinalproject;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
 
 import android.graphics.Bitmap;
+import androidx.fragment.app.DialogFragment;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -82,7 +82,7 @@ public class PictureRoulette extends AppCompatActivity {
                 MyOpener myOpener = new MyOpener(this);
                 myOpener.addToDB(nasa.getDate(), nasa.getTitle(), "", nasa.getUrl(), nasa.getHdUrl());
                 Toast.makeText(PictureRoulette.this, "Data saved to database", Toast.LENGTH_SHORT).show();
-                // add undo
+
                 myOpener.close();
             } else {
                 Toast.makeText(PictureRoulette.this, "No data to save", Toast.LENGTH_SHORT).show();
