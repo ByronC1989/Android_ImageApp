@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Nasa App V.1</string>
+    <string name="open" >Ouvrir</string>
+    <string name="close">Fermer</string>
+
+    <!--Toolbar Strings -->
+    <string name="menuHome" >Maison</string>
+    <string name="menuProfile">Profil</string>
+    <string name="menuPicOfDay">Image du jour</string>
+    <string name="menuPicRoulette">roulette illustrée</string>
+    <string name="menuFavouritePic">favoris</string>
+    <string name="menuExit">Sortie</string>
+    <string name="help">Aide</string>
+
+    <!-- Main Activity Strings -->
+
+    <!-- Alert box-->
+    <string name="dialog_title" >avertissement</string>
+    <string name="dialog_msg"> Cela ouvrira votre navigateur !</string>
+    <string name="btn_yes">Oui</string>
+    <string name="btn_no">Non</string>
+
+    <!-- Image of the Day Strings -->
+    <string name="browser_msg">Cliquez sur le bouton ci-dessous pour accéder à l\'image HD.</string>
+    <string name="btn_hd">Images HD</string>
+    <string name="btn_datePicker">Choisis une date</string>
+    <string name="btn_save">Enregistrer l\'image</string>
+
+    <!-- Image Roulette Strings -->
+    <string name="btn_roulette">Roulette Stratégique!</string>
+
+    <!-- Profile -->
+    <string name="name_msg">Veuillez entrer votre nom d\'utilisateur ci-dessous:</string>
+    <string name="avatar_msg">Veuillez choisir un avatar ci-dessous:</string>
+    <string name="btn_profileSave">Sauvegarder</string>
+    <string name="profile_name">Nom</string>
+    <string name="radio1">Choix 1</string>
+    <string name="radio2">Choix 2</string>
+    <string name="radio3">Choix 3</string>
+
+</resources>

@@ -13,7 +13,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -60,9 +59,9 @@ public class MainActivity extends BaseActivity {
         String message = null;
 
         if (item.getItemId() == R.id.home) {
-            message = "the title";
+            message = "home";
         } else if (item.getItemId() == R.id.profile) {
-            message = "the title!";
+            message = "profile!";
         }
 
         DrawerLayout drawerLayout = findViewById(R.id.homedrawer);
