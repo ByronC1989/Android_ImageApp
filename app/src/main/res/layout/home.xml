@@ -11,7 +11,16 @@
         android:title="@string/app_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"/>
+        android:background="?attr/colorPrimary">
+    <Button
+        android:id="@+id/btn_help"
+        app:icon="@drawable/img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:background="?attr/colorPrimary"
+        android:layout_gravity="end" />
+    </androidx.appcompat.widget.Toolbar>
 
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/homedrawer"

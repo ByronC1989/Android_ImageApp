@@ -10,6 +10,7 @@
     <string name="menuPicRoulette" translatable="false">Picture Roulette</string>
     <string name="menuFavouritePic" translatable="false">Favourites</string>
     <string name="menuExit" translatable="false">Exit</string>
+    <string name="help" translatable="false">Help</string>
 
 
     <!-- Image of the Day Strings -->
