@@ -31,6 +31,7 @@ public class ProfileActivity extends BaseActivity {
 
         // Adds toolbar to Activity
         Toolbar toolbar = findViewById(R.id.home_toolbar);
+
         setSupportActionBar(toolbar);
 
         DrawerLayout drawerLayout = findViewById(R.id.homedrawer);
