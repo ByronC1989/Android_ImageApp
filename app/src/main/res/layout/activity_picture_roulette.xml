@@ -16,7 +16,7 @@
         android:id="@+id/tv_Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TITLE"
+        android:text=""
         app:layout_constraintBottom_toTopOf="@+id/iv_Nasa"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -53,14 +53,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Start Roulette!" />
+            android:text="@string/btn_roulette" />
 
         <Button
             android:id="@+id/btn_save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Save Image" />
+            android:text="@string/btn_save" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

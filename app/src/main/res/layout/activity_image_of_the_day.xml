@@ -15,7 +15,7 @@
         android:id="@+id/tv_Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TITLE"
+        android:text=" "
         app:layout_constraintBottom_toTopOf="@+id/tv_Date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -24,7 +24,7 @@
         android:id="@+id/tv_HdURL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Click the button below to be brought to the HD Image."
+        android:text="@string/browser_msg"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_Nasa" />
 
@@ -32,7 +32,7 @@
         android:id="@+id/btnHD"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="HD Image"
+        android:text="@string/btn_hd"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_HdURL" />
 
@@ -40,7 +40,7 @@
         android:id="@+id/tv_Date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="DATE"
+        android:text=" "
         app:layout_constraintBottom_toTopOf="@+id/iv_Nasa"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -68,14 +68,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Pick a date" />
+            android:text="@string/btn_datePicker" />
 
         <Button
             android:id="@+id/btn_save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Save Image" />
+            android:text="@string/btn_save" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
