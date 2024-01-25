@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".favourite_date_list">
 
+    <!-- Add toolbar needs to be last in layout -->
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar_layout"
+        />
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -20,11 +25,5 @@
         android:layout_height="match_parent" />
 
     </FrameLayout>
-
-    <!-- Add toolbar needs to be last in layout -->
-    <include
-        android:id="@+id/include"
-        layout="@layout/toolbar_layout"
-       />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

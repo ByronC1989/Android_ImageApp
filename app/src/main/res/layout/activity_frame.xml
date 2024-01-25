@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".DetailsFragment">
 
+    <!-- Add toolbar needs to be last in layout -->
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar_layout" />
+
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="670dp"
@@ -15,10 +21,5 @@
         android:id="@+id/fragmentLocation">
 
     </FrameLayout>
-
-    <!-- Add toolbar needs to be last in layout -->
-    <include
-        android:id="@+id/include"
-        layout="@layout/toolbar_layout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

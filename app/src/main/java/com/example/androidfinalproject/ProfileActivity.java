@@ -65,15 +65,15 @@ public class ProfileActivity extends BaseActivity {
         uname.setText(savedName);
         if (savedAvatar.equals("alien")) {
             // update image view
-            myDrawable = getResources().getDrawable(R.drawable.alien);
+        //    myDrawable = getResources().getDrawable(R.drawable.alien);
         } else if (savedAvatar.equals("moon")) {
             // update image view
-            myDrawable = getResources().getDrawable(R.drawable.moon);
+        //    myDrawable = getResources().getDrawable(R.drawable.moon);
         } else if (savedAvatar.equals("comet")) {
             // update image view
-            myDrawable = getResources().getDrawable(R.drawable.comet);
+        //    myDrawable = getResources().getDrawable(R.drawable.comet);
         } else {
-            myDrawable = getResources().getDrawable(R.drawable.comet);
+        //    myDrawable = getResources().getDrawable(R.drawable.comet);
         }
         avatar.setImageDrawable(myDrawable);
 
@@ -88,17 +88,17 @@ public class ProfileActivity extends BaseActivity {
 
                 if (radioButton.getText().equals("alien")) {
                     // update image view
-                    myDrawable = getResources().getDrawable(R.drawable.alien);
+                //    myDrawable = getResources().getDrawable(R.drawable.alien);
                     avatar.setImageDrawable(myDrawable);
                     avatarName = "alien";
                 } else if (radioButton.getText().equals("moon")) {
                     // update image view
-                    myDrawable = getResources().getDrawable(R.drawable.moon);
+                //    myDrawable = getResources().getDrawable(R.drawable.moon);
                     avatar.setImageDrawable(myDrawable);
                     avatarName = "moon";
                 } else if (radioButton.getText().equals("comet")) {
                     // update image view
-                    myDrawable = getResources().getDrawable(R.drawable.comet);
+                //    myDrawable = getResources().getDrawable(R.drawable.comet);
                     avatar.setImageDrawable(myDrawable);
                     avatarName = "comet";
                 }
