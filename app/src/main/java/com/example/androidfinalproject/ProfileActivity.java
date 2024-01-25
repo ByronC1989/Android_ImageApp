@@ -78,30 +78,27 @@ public class ProfileActivity extends BaseActivity {
         avatar.setImageDrawable(myDrawable);
 
         // set avatar
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
+        radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
 
-                RadioButton radioButton = group.findViewById(checkedId);
+            RadioButton radioButton = group.findViewById(checkedId);
 
-                Log.d("avatar", radioButton.getText() + "");
+            Log.d("avatar", radioButton.getText() + "");
 
-                if (radioButton.getText().equals("alien")) {
-                    // update image view
-                    myDrawable = getResources().getDrawable(R.drawable.alien);
-                    avatar.setImageDrawable(myDrawable);
-                    avatarName = "alien";
-                } else if (radioButton.getText().equals("moon")) {
-                    // update image view
-                    myDrawable = getResources().getDrawable(R.drawable.moon);
-                    avatar.setImageDrawable(myDrawable);
-                    avatarName = "moon";
-                } else if (radioButton.getText().equals("comet")) {
-                    // update image view
-                    myDrawable = getResources().getDrawable(R.drawable.comet);
-                    avatar.setImageDrawable(myDrawable);
-                    avatarName = "comet";
-                }
+            if (radioButton.getText().equals("alien")) {
+                // update image view
+                myDrawable = getResources().getDrawable(R.drawable.alien);
+                avatar.setImageDrawable(myDrawable);
+                avatarName = "alien";
+            } else if (radioButton.getText().equals("moon")) {
+                // update image view
+                myDrawable = getResources().getDrawable(R.drawable.moon);
+                avatar.setImageDrawable(myDrawable);
+                avatarName = "moon";
+            } else if (radioButton.getText().equals("comet")) {
+                // update image view
+                myDrawable = getResources().getDrawable(R.drawable.comet);
+                avatar.setImageDrawable(myDrawable);
+                avatarName = "comet";
             }
         });
 
