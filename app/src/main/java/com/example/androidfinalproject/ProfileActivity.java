@@ -61,7 +61,6 @@ public class ProfileActivity extends BaseActivity {
         Button btnSave = findViewById(R.id.btnSave);
 
 
-
         // fill in the editText with username
         uname.setText(savedName);
         if (savedAvatar.equals("alien")) {

@@ -54,6 +54,5 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars" />
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
