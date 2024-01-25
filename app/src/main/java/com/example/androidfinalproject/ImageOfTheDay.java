@@ -1,7 +1,10 @@
 package com.example.androidfinalproject;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.DialogFragment;
 
 import android.app.DatePickerDialog;
@@ -19,6 +22,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -34,11 +39,10 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class ImageOfTheDay extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+public class ImageOfTheDay extends BaseActivity implements DatePickerDialog.OnDateSetListener {
 
     // View and Button Variables.
     private TextView tvDate;
-    private TextView tvURL;
     private TextView tvHdURL;
     private TextView tvTitle;
 
@@ -56,11 +60,25 @@ public class ImageOfTheDay extends AppCompatActivity implements DatePickerDialog
     private String hdUrl;
     private String title;
 
-
+    private NavigationView navigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_of_the_day);
+
+        // Adds toolbar to Activity
+        Toolbar toolbar = findViewById(R.id.home_toolbar);
+        setSupportActionBar(toolbar);
+
+        DrawerLayout drawerLayout = findViewById(R.id.homedrawer);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
+                drawerLayout, toolbar, R.string.open, R.string.close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        navigationView = findViewById(R.id.navigation_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
 
         // Declare Buttons
         btnDate = findViewById(R.id.btn_date);

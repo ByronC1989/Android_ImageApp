@@ -34,8 +34,8 @@
     <string name="avatar_msg">Please pick a Avatar below:</string>
     <string name="btn_profileSave">Save</string>
     <string name="profile_name">Name</string>
-    <string name="radio1">Choice 1</string>
-    <string name="radio2">Choice 2</string>
-    <string name="radio3">Choice 3</string>
+    <string name="radio1">alien</string>
+    <string name="radio2">moon</string>
+    <string name="radio3">comet</string>
 
 </resources>

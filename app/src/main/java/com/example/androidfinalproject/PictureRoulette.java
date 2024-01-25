@@ -1,9 +1,12 @@
 package com.example.androidfinalproject;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.DialogFragment;
 
 import android.graphics.Bitmap;
-import androidx.fragment.app.DialogFragment;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -13,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,26 +37,42 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 
-public class PictureRoulette extends AppCompatActivity {
+public class PictureRoulette extends BaseActivity {
 
     static final String baseUrl = "https://api.nasa.gov/planetary/apod?api_key=DgPLcIlnmN0Cwrzcg3e9NraFaYLIDI68Ysc6Zh3d&date=";
     // View and Button Variables.
-    Button btnStart;
-    Button btnSave;
-    TextView tvTitle;
-    ProgressBar progress;
-
-    String datePicked;
-    ImageView ivNasa;
+    private Button btnStart;
+    private Button btnSave;
+    private TextView tvTitle;
+    private ProgressBar progress;
+    private String datePicked;
+    private ImageView ivNasa;
 
     // store NasaImage
-    NasaImage nasa;
-    Boolean rouletteStart = false; // determines if roulette runs or not
-
+    private NasaImage nasa;
+    private Boolean rouletteStart = false; // determines if roulette runs or not
+    private Bitmap imageOfDay;
+    private String regUrl;
+    private String hdUrl;
+    private String title;
+    private NavigationView navigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_picture_roulette);
+
+        // Adds toolbar to Activity
+        Toolbar toolbar = findViewById(R.id.home_toolbar);
+        setSupportActionBar(toolbar);
+
+        DrawerLayout drawerLayout = findViewById(R.id.homedrawer);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
+                drawerLayout, toolbar, R.string.open, R.string.close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        navigationView = findViewById(R.id.navigation_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
         // Declare ProgressBar
         progress = findViewById(R.id.progressBar);
@@ -82,7 +103,7 @@ public class PictureRoulette extends AppCompatActivity {
                 MyOpener myOpener = new MyOpener(this);
                 myOpener.addToDB(nasa.getDate(), nasa.getTitle(), "", nasa.getUrl(), nasa.getHdUrl());
                 Toast.makeText(PictureRoulette.this, "Data saved to database", Toast.LENGTH_SHORT).show();
-
+                // add undo
                 myOpener.close();
             } else {
                 Toast.makeText(PictureRoulette.this, "No data to save", Toast.LENGTH_SHORT).show();
@@ -113,10 +134,6 @@ public class PictureRoulette extends AppCompatActivity {
 
     private class NasaPictures extends AsyncTask<String, Integer, String> {
 
-        Bitmap imageOfDay;
-        String regUrl;
-        String hdUrl;
-        String title;
         @Override
         protected String doInBackground(String... strings) {
 

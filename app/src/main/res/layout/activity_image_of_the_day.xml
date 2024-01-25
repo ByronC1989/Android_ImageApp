@@ -6,11 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ImageOfTheDay">
 
-    <!-- Adds toolbar layout to activity -->
-    <include
-        android:id="@+id/include"
-        layout="@layout/toolbar_layout" />
-
     <TextView
         android:id="@+id/tv_Title"
         android:layout_width="wrap_content"
@@ -77,5 +72,10 @@
             android:layout_weight="1"
             android:text="@string/btn_save" />
     </LinearLayout>
+
+    <!-- Add toolbar needs to be last in layout -->
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar_layout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
