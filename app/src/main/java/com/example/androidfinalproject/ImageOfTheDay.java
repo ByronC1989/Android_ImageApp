@@ -36,19 +36,19 @@ import java.util.Calendar;
 public class ImageOfTheDay extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     // View and Button Variables.
-    TextView tvDate;
-    TextView tvURL;
-    TextView tvHdURL;
-    TextView tvTitle;
+    private TextView tvDate;
+    private TextView tvURL;
+    private TextView tvHdURL;
+    private TextView tvTitle;
 
-    ImageView ivNasa;
+    private ImageView ivNasa;
 
-    Button btnDate;
-    Button btnSave;
-    Button btnHD;
-    String datePicked;
+    private Button btnDate;
+    private Button btnSave;
+    private Button btnHD;
+    private String datePicked;
 
-    NasaImage nasa;
+    private NasaImage nasa;
 
 
     @Override
@@ -131,7 +131,10 @@ public class ImageOfTheDay extends AppCompatActivity implements DatePickerDialog
                 fos.write(fileContents.getBytes());
                 fos.close();
 
+                Log.d("NasaImageFilePath", getBaseContext().getFileStreamPath(fileName).toString());
+
             } catch (IOException e) {
+
                 e.printStackTrace();
             }
         } else {

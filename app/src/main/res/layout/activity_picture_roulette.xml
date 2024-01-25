@@ -10,9 +10,7 @@
 
     <include
         android:id="@+id/include"
-        layout="@layout/toolbar_main"
-        tools:layout_editor_absoluteX="-39dp"
-        tools:layout_editor_absoluteY="55dp" />
+        layout="@layout/toolbar_layout" />
 
     <TextView
         android:id="@+id/tv_Title"

@@ -1,6 +1,7 @@
 package com.example.androidfinalproject;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,10 +17,22 @@ public class favourite_date_list extends AppCompatActivity {
     private MyListAdapter NasaImage;
     private MyOpener myOpener;
 
+    // define bundle tags
+    private static final String NASA_TITLE = "title";
+    private static final String NASA_DATE = "date";
+    private static final String NASA_HDURL = "hdUrl";
+    private static final String NASA_URL = "url";
+    private static final String NASA_FILEPATH = "filePath";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.favourite_date);
+
+        // get name of activity test
+        String activity = this.getClass().getSimpleName();
+        Log.e("appName", "Activity Name: " + activity);
 
         // Initialize database opener
         myOpener = new MyOpener(this);
@@ -39,9 +52,11 @@ public class favourite_date_list extends AppCompatActivity {
             String date = intent.getStringExtra("date");
             String title = intent.getStringExtra("title");
             String hdUrl = intent.getStringExtra("hdUrl");
+            String filePath = intent.getStringExtra("filePath");
+            String url = intent.getStringExtra("url");
 
             // Use date as ID
-            NasaImage savedDate = new NasaImageBuilder().setDate(date).setUrl(title).setHdUrl(hdUrl).setTitle("").setFilePath("").createNasaImage();
+            NasaImage savedDate = new NasaImageBuilder().setDate(date).setUrl(url).setHdUrl(hdUrl).setTitle(title).setFilePath(filePath).createNasaImage();
             SavedDateList.add(savedDate);
 
             // Add the new date to the database
@@ -72,6 +87,29 @@ public class favourite_date_list extends AppCompatActivity {
                     })
                     .create().show();
             return true;
+        });
+
+        savedDateListView.setOnItemClickListener((parent, view, position, id) -> {
+            NasaImage nasa = (NasaImage) savedDateListView.getAdapter().getItem(position);
+
+                // create bundle
+                Bundle dataToPass = new Bundle();
+
+                // assigning values to be passed
+                dataToPass.putString(NASA_TITLE, nasa.getTitle());
+                dataToPass.putString(NASA_DATE, nasa.getDate());
+                dataToPass.putString(NASA_HDURL, nasa.getHdUrl());
+                dataToPass.putString(NASA_URL, nasa.getUrl());
+                dataToPass.putString(NASA_FILEPATH, nasa.getFilePath());
+
+                Log.d("NasaImage", nasa.getTitle());
+                Log.d("NasaImage", nasa.getDate());
+                Log.d("NasaImage", nasa.getHdUrl());
+
+                // send data to fragment activity
+                Intent nextActivity = new Intent(favourite_date_list.this, FrameActivity.class);
+                nextActivity.putExtras(dataToPass);
+                startActivity(nextActivity);
         });
     }
 
@@ -107,7 +145,7 @@ public class favourite_date_list extends AppCompatActivity {
 
             // Inflate layout
             if (newView == null) {
-                newView = inflater.inflate(R.layout.favouritedate_list, parent, false);
+                newView = inflater.inflate(R.layout.nasa_image_item, parent, false);
             }
 
             // Reference to TextView in the layout
