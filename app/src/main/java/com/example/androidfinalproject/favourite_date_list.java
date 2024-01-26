@@ -8,18 +8,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
-
-import com.google.android.material.navigation.NavigationView;
-
 import java.util.List;
 
-public class favourite_date_list extends BaseActivity {
+public class favourite_date_list extends AppCompatActivity {
     private List<NasaImage> SavedDateList;
     private MyListAdapter NasaImage;
     private MyOpener myOpener;
@@ -30,24 +23,12 @@ public class favourite_date_list extends BaseActivity {
     private static final String NASA_HDURL = "hdUrl";
     private static final String NASA_URL = "url";
     private static final String NASA_FILEPATH = "filePath";
-    private NavigationView navigationView;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.favourite_date);
-
-        // Adds toolbar to Activity
-        Toolbar toolbar = findViewById(R.id.home_toolbar);
-        setSupportActionBar(toolbar);
-
-        DrawerLayout drawerLayout = findViewById(R.id.homedrawer);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
-                drawerLayout, toolbar, R.string.open, R.string.close);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
-
-        navigationView = findViewById(R.id.navigation_view);
-        navigationView.setNavigationItemSelectedListener(this);
 
         // get name of activity test
         String activity = this.getClass().getSimpleName();
@@ -66,23 +47,24 @@ public class favourite_date_list extends BaseActivity {
         savedDateListView.setAdapter(NasaImage);
 
         // Receive the date information from the intent
-       Intent intent = getIntent();
-       if (intent != null && intent.hasExtra("date")) {
-           String date = intent.getStringExtra("date");
-           String title = intent.getStringExtra("title");
+        Intent intent = getIntent();
+        if (intent != null && intent.hasExtra("date")) {
+            String date = intent.getStringExtra("date");
+            String title = intent.getStringExtra("title");
             String hdUrl = intent.getStringExtra("hdUrl");
             String filePath = intent.getStringExtra("filePath");
-           String url = intent.getStringExtra("url");
+            String url = intent.getStringExtra("url");
 
-          // Use date as ID
+            // Use date as ID
             NasaImage savedDate = new NasaImageBuilder().setDate(date).setUrl(url).setHdUrl(hdUrl).setTitle(title).setFilePath(filePath).createNasaImage();
-           SavedDateList.add(savedDate);
+            SavedDateList.add(savedDate);
 
             // Add the new date to the database
             myOpener.addToDB(date,"", "", getNasaPictureUrl(date),"");
-           // Update the ListView
+
+            // Update the ListView
             NasaImage.notifyDataSetChanged();
-       }
+        }
 
 
         // Set long click listener for items in the ListView
@@ -120,6 +102,10 @@ public class favourite_date_list extends BaseActivity {
                 dataToPass.putString(NASA_URL, nasa.getUrl());
                 dataToPass.putString(NASA_FILEPATH, nasa.getFilePath());
 
+                Log.d("NasaImage", nasa.getTitle());
+                Log.d("NasaImage", nasa.getDate());
+                Log.d("NasaImage", nasa.getHdUrl());
+
                 // send data to fragment activity
                 Intent nextActivity = new Intent(favourite_date_list.this, FrameActivity.class);
                 nextActivity.putExtras(dataToPass);
@@ -127,9 +113,9 @@ public class favourite_date_list extends BaseActivity {
         });
     }
 
-   // Construct the URL for NASA picture based on the date
-       public static String getNasaPictureUrl(String date) {
-       return "https://api.nasa.gov/planetary/apod?api_key=DgPLcIlnmN0Cwrzcg3e9NraFaYLIDI68Ysc6Zh3d&date=" + date;
+    // Construct the URL for NASA picture based on the date
+    public static String getNasaPictureUrl(String date) {
+        return "https://api.nasa.gov/planetary/apod?api_key=DgPLcIlnmN0Cwrzcg3e9NraFaYLIDI68Ysc6Zh3d&date=" + date;
     }
 
     // Adapter class for the ListView

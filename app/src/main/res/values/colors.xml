@@ -3,4 +3,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="dark_blue">#5227d8</color>
+    <color name="Nasa_blue">#0b3d91</color>
+    <color name="Nasa_red">#fc3d21</color>
+    <color name="off_white">#d6d7d9</color>
+
 </resources>

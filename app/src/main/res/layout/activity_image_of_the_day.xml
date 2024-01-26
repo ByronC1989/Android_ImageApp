@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ImageOfTheDay">
+    tools:context=".ImageOfTheDay"
+    android:background="@color/off_white">
 
     <!-- Add toolbar needs to be last in layout -->
     <include
@@ -32,6 +33,8 @@
         android:id="@+id/btnHD"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/Nasa_blue"
+        android:textColor="@color/white"
         android:text="@string/btn_hd"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_HdURL" />
@@ -68,14 +71,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/btn_datePicker" />
+            android:text="@string/btn_datePicker"
+            android:backgroundTint="@color/Nasa_blue"
+            android:textColor="@color/white"/>
 
         <Button
             android:id="@+id/btn_save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/btn_save" />
+            android:text="@string/btn_save"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/Nasa_blue"/>
     </LinearLayout>
 
 
