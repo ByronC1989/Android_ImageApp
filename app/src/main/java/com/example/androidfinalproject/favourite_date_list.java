@@ -45,6 +45,7 @@ public class favourite_date_list extends BaseActivity {
 
         // Adds toolbar to Activity
         Toolbar toolbar = findViewById(R.id.home_toolbar);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(getResources().getString(R.string.favourite));
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
@@ -60,26 +61,6 @@ public class favourite_date_list extends BaseActivity {
         // Set up ListView
         ListView savedDateListView = findViewById(R.id.list_view);
         savedDateListView.setAdapter(NasaImage);
-
-        // Receive the date information from the intent
-//        Intent intent = getIntent();
-//        if (intent != null && intent.hasExtra("date")) {
-//            String date = intent.getStringExtra("date");
-//            String title = intent.getStringExtra("title");
-//            String hdUrl = intent.getStringExtra("hdUrl");
-//            String filePath = intent.getStringExtra("filePath");
-//            String url = intent.getStringExtra("url");
-//
-//            // Use date as ID
-//            NasaImage savedDate = new NasaImageBuilder().setDate(date).setUrl(url).setHdUrl(hdUrl).setTitle(title).setFilePath(filePath).createNasaImage();
-//            SavedDateList.add(savedDate);
-//
-//            // Add the new date to the database
-//            myOpener.addToDB(date,"", "", getNasaPictureUrl(date),"");
-//
-//            // Update the ListView
-//            NasaImage.notifyDataSetChanged();
-//        }
 
 
         // Set long click listener for items in the ListView

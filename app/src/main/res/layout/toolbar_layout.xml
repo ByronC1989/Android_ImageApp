@@ -9,11 +9,10 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/home_toolbar"
         android:title="@string/app_name"
-        android:titleTextColor="@color/white"
+        android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/Nasa_blue">
-
 
     </androidx.appcompat.widget.Toolbar>
 

@@ -75,6 +75,7 @@ public class PictureRoulette extends BaseActivity {
 
         // Adds toolbar to Activity
         Toolbar toolbar = findViewById(R.id.home_toolbar);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(getResources().getString(R.string.picRoulette));
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
