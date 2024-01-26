@@ -41,17 +41,12 @@ public class ProfileActivity extends BaseActivity {
         String savedName = prefs.getString("username", " ");
         String savedAvatar = prefs.getString("avatar", " ");
 
-        Log.d("profile", savedName);
-        Log.d("profile", savedAvatar);
-
         EditText uname = findViewById(R.id.editUsername);
         avatar = findViewById(R.id.ivAvatar);
 
         RadioGroup radioGroup = findViewById(R.id.radioGroup);
 
         Button btnSave = findViewById(R.id.btnSave);
-
-        Log.d("appName", savedAvatar);
 
         // fill in the editText with username
         uname.setText(savedName);
@@ -63,23 +58,21 @@ public class ProfileActivity extends BaseActivity {
 
             RadioButton radioButton = group.findViewById(checkedId);
 
-            Log.d("avatar", radioButton.getText() + "");
-
-            if (radioButton.getText().equals("alien")) {
+            if (radioButton.getText().equals("alien") || radioButton.getText().equals("extraterrestre")) {
                 // update image view
                 myDrawable = getResources().getDrawable(R.drawable.alien);
                 avatar.setImageDrawable(myDrawable);
-                avatarName = "alien";
-            } else if (radioButton.getText().equals("orbit")) {
+                avatarName = radioButton.getText().toString();
+            } else if (radioButton.getText().equals("orbit") || radioButton.getText().equals("orbite")) {
                 // update image view
                 myDrawable = getResources().getDrawable(R.drawable.orbit);
                 avatar.setImageDrawable(myDrawable);
-                avatarName = "orbit";
-            } else if (radioButton.getText().equals("comet")) {
+                avatarName = radioButton.getText().toString();
+            } else if (radioButton.getText().equals("comet") || radioButton.getText().equals("comète")) {
                 // update image view
                 myDrawable = getResources().getDrawable(R.drawable.comet);
                 avatar.setImageDrawable(myDrawable);
-                avatarName = "comet";
+                avatarName = radioButton.getText().toString();
             }
         });
 
@@ -94,13 +87,13 @@ public class ProfileActivity extends BaseActivity {
     }
 
     public void avaterControl (String savedAvatar){
-        if (savedAvatar.equals("alien")) {
+        if (savedAvatar.equals("alien") || savedAvatar.equals("extraterrestre")) {
             // update image view
             myDrawable = getResources().getDrawable(R.drawable.alien);
-        } else if (savedAvatar.equals("orbit")) {
+        } else if (savedAvatar.equals("orbit") || savedAvatar.equals("orbite")) {
             // update image view
             myDrawable = getResources().getDrawable(R.drawable.orbit);
-        } else if (savedAvatar.equals("comet")) {
+        } else if (savedAvatar.equals("comet") || savedAvatar.equals("comète")) {
             // update image view
             myDrawable = getResources().getDrawable(R.drawable.comet);
         } else {

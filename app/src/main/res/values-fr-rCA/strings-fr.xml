@@ -35,8 +35,8 @@
     <string name="avatar_msg">Veuillez choisir un avatar ci-dessous:</string>
     <string name="btn_profileSave">Sauvegarder</string>
     <string name="profile_name">Nom</string>
-    <string name="radio1">cool</string>
-    <string name="radio2">lune</string>
-    <string name="radio3">OVNI</string>
+    <string name="radio1">extraterrestre</string>
+    <string name="radio2">orbite</string>
+    <string name="radio3">comète</string>
 
 </resources>
