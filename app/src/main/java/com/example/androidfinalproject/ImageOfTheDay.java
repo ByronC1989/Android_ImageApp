@@ -1,10 +1,7 @@
 package com.example.androidfinalproject;
 
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.DialogFragment;
 
 import android.app.DatePickerDialog;
@@ -15,20 +12,18 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -43,9 +38,7 @@ public class ImageOfTheDay extends BaseActivity implements DatePickerDialog.OnDa
 
     // View and Button Variables.
     private TextView tvDate;
-    private TextView tvHdURL;
     private TextView tvTitle;
-
     private ImageView ivNasa;
 
     private Button btnDate;
@@ -60,7 +53,6 @@ public class ImageOfTheDay extends BaseActivity implements DatePickerDialog.OnDa
     private String hdUrl;
     private String title;
 
-    private NavigationView navigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,7 +70,6 @@ public class ImageOfTheDay extends BaseActivity implements DatePickerDialog.OnDa
 
         // Declare TextViews
         ivNasa = findViewById(R.id.iv_Nasa);
-        tvHdURL = findViewById(R.id.tv_HdURL);
         tvTitle = findViewById(R.id.tv_Title);
 
         // Display date picker when clicked.
@@ -94,7 +85,7 @@ public class ImageOfTheDay extends BaseActivity implements DatePickerDialog.OnDa
 
                 MyOpener myOpener = new MyOpener(this);
                 myOpener.addToDB(nasa.getDate(), nasa.getTitle(), saveToFile(nasa), nasa.getUrl(), nasa.getHdUrl());
-                Toast.makeText(ImageOfTheDay.this, "Data saved to database and file", Toast.LENGTH_SHORT).show();
+                Snackbar.make(btnSave, "Data saved to database", Snackbar.LENGTH_SHORT).show();
                 myOpener.close();
             } else {
 

@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.DialogFragment;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -18,11 +19,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -52,6 +55,7 @@ public class PictureRoulette extends BaseActivity {
     private NasaImage nasa;
     private Boolean rouletteStart = false; // determines if roulette runs or not
     private Bitmap imageOfDay;
+    private Bitmap image;
     private String regUrl;
     private String hdUrl;
     private String title;
@@ -92,8 +96,8 @@ public class PictureRoulette extends BaseActivity {
         btnSave.setOnClickListener( click -> {
             if (nasa != null) {
                 MyOpener myOpener = new MyOpener(this);
-                myOpener.addToDB(nasa.getDate(), nasa.getTitle(), "", nasa.getUrl(), nasa.getHdUrl());
-                Toast.makeText(PictureRoulette.this, "Data saved to database", Toast.LENGTH_SHORT).show();
+                myOpener.addToDB(nasa.getDate(), nasa.getTitle(), saveToFile(nasa), nasa.getUrl(), nasa.getHdUrl());
+                Snackbar.make(btnSave, "Data saved to database", Snackbar.LENGTH_SHORT).show();
                 // add undo
                 myOpener.close();
             } else {
@@ -118,6 +122,30 @@ public class PictureRoulette extends BaseActivity {
         datePicked = randomDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
         return datePicked;
+    }
+
+    private String saveToFile(NasaImage nasa) {
+        String fileName = "";
+
+        if (nasa != null) {
+            try {
+                fileName = "nasa_image_" + nasa.getDate() + ".jpeg";
+                image = nasa.getImage();
+                FileOutputStream outputStream = openFileOutput(fileName, Context.MODE_PRIVATE);
+                image.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+                nasa.setFilePath(fileName);
+                outputStream.flush();
+                outputStream.close();
+
+                return fileName;
+
+            } catch (IOException e) {
+
+                e.printStackTrace();
+            }
+        }
+
+        return fileName;
     }
 
     private class NasaPictures extends AsyncTask<String, Integer, String> {
