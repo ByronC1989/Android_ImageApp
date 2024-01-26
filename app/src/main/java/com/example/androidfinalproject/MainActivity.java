@@ -36,10 +36,12 @@ public class MainActivity extends BaseActivity {
 
         // Adds toolbar to Activity
         Toolbar toolbar = findViewById(R.id.home_toolbar);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
 
         DrawerLayout drawerLayout = findViewById(R.id.homedrawer);
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
                 drawerLayout, toolbar, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(toggle);
