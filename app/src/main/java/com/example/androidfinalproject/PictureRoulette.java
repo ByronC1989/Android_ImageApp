@@ -83,12 +83,12 @@ public class PictureRoulette extends BaseActivity {
         btnStart.setOnClickListener( click -> {
             if(!rouletteStart){
                     rouletteStart = true; // turn
-                    btnStart.setText("End Roulette!");
+                    btnStart.setText(getResources().getString(R.string.btn_end));
                     PictureRoulette.NasaPictures req = new PictureRoulette.NasaPictures();
                     req.execute(baseUrl);
             } else {
                 rouletteStart = false;
-                btnStart.setText("Start Roulette!");
+                btnStart.setText(getResources().getString(R.string.btn_roulette));
             }
         });
 
@@ -97,11 +97,11 @@ public class PictureRoulette extends BaseActivity {
             if (nasa != null) {
                 MyOpener myOpener = new MyOpener(this);
                 myOpener.addToDB(nasa.getDate(), nasa.getTitle(), saveToFile(nasa), nasa.getUrl(), nasa.getHdUrl());
-                Snackbar.make(btnSave, "Data saved to database", Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(btnSave, getResources().getString(R.string.save_data), Snackbar.LENGTH_SHORT).show();
                 // add undo
                 myOpener.close();
             } else {
-                Toast.makeText(PictureRoulette.this, "No data to save", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PictureRoulette.this, getResources().getString(R.string.no_data), Toast.LENGTH_SHORT).show();
             }
         });
 

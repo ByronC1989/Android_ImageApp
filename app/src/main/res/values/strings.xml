@@ -33,6 +33,7 @@
 
     <!-- Image Roulette Strings -->
     <string name="btn_roulette">Start Roulette!</string>
+    <string name="btn_end">  End Roulette!</string>
 
     <!-- Profile -->
     <string name="name_msg">Please enter your user name below:</string>
