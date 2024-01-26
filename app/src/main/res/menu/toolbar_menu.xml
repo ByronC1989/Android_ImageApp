@@ -5,7 +5,6 @@
     <item android:title="Home"
         android:id="@+id/home"
         android:icon="@drawable/baseline_home_24"
-        app:colorTint=""
         app:showAsAction="always"/>
 
 
