@@ -22,6 +22,7 @@ public class ProfileActivity extends BaseActivity {
 
     private Drawable myDrawable;
     private String avatarName;
+    private ImageView avatar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,6 @@ public class ProfileActivity extends BaseActivity {
         setSupportActionBar(toolbar);
 
 
-
         SharedPreferences prefs = getSharedPreferences("profile", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
 
@@ -45,7 +45,7 @@ public class ProfileActivity extends BaseActivity {
         Log.d("profile", savedAvatar);
 
         EditText uname = findViewById(R.id.editUsername);
-        ImageView avatar = findViewById(R.id.ivAvatar);
+        avatar = findViewById(R.id.ivAvatar);
 
         RadioGroup radioGroup = findViewById(R.id.radioGroup);
 
@@ -55,19 +55,8 @@ public class ProfileActivity extends BaseActivity {
 
         // fill in the editText with username
         uname.setText(savedName);
-        if (savedAvatar.equals("alien")) {
-            // update image view
-            myDrawable = getResources().getDrawable(R.drawable.alien);
-        } else if (savedAvatar.equals("orbit")) {
-            // update image view
-            myDrawable = getResources().getDrawable(R.drawable.orbit);
-        } else if (savedAvatar.equals("comet")) {
-            // update image view
-            myDrawable = getResources().getDrawable(R.drawable.comet);
-        } else {
-            myDrawable = getResources().getDrawable(R.drawable.comet);
-        }
-        avatar.setImageDrawable(myDrawable);
+        avaterControl(savedAvatar);
+
 
         // set avatar
         radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
@@ -102,6 +91,21 @@ public class ProfileActivity extends BaseActivity {
             editor.commit();
 
         });
+    }
 
+    public void avaterControl (String savedAvatar){
+        if (savedAvatar.equals("alien")) {
+            // update image view
+            myDrawable = getResources().getDrawable(R.drawable.alien);
+        } else if (savedAvatar.equals("orbit")) {
+            // update image view
+            myDrawable = getResources().getDrawable(R.drawable.orbit);
+        } else if (savedAvatar.equals("comet")) {
+            // update image view
+            myDrawable = getResources().getDrawable(R.drawable.comet);
+        } else {
+            myDrawable = getResources().getDrawable(R.drawable.comet);
+        }
+        avatar.setImageDrawable(myDrawable);
     }
 }
