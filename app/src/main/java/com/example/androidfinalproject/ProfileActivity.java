@@ -34,6 +34,7 @@ public class ProfileActivity extends BaseActivity {
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(getResources().getString(R.string.profile));
+        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
 
 
         SharedPreferences prefs = getSharedPreferences("profile", Context.MODE_PRIVATE);

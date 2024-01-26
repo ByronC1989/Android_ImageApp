@@ -54,4 +54,19 @@
 
     <!-- Help menu -->
     <string name="intro">Welcome, </string>
+    <string name="helpTitle">Help</string>
+    <string name="helpheading">Explanation for each program:</string>
+    <string name="profileHelp">Welcome, to your profile use this to add personal customization!</string>
+    <string name="picOfDayHelp">Select the date picker at the bottom of the screen to start viewing images.
+    You can also press the save button to save the image!</string>
+    <string name="picRouletteHelp">Select the start button at the bottom of the screen to start viewing random images.
+    You can also press the save button to save the image!</string>
+    <string name="favouritesHelp">Tab on one of your favourite images to view that image! If you hold down on a
+    selection you can delete it!</string>
+    <string name="help1">1. Image of the Day: Enter a date to view or save the NASA image of the day!</string>
+    <string name="help2">2. Picture Roulette: Picture roulette selects a random date to view!</string>
+    <string name="help3">3. Favourites: View the previously selected favourites!</string>
+    <string name="help4">4. Profile: View and update your profile!</string>
+
+
 </resources>

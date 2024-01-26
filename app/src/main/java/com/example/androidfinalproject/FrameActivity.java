@@ -21,6 +21,7 @@ public class FrameActivity extends BaseActivity {
         // Adds toolbar to Activity
         Toolbar toolbar = findViewById(R.id.home_toolbar);
         setSupportActionBar(toolbar);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
 
         Bundle dataToPass = getIntent().getExtras();
 

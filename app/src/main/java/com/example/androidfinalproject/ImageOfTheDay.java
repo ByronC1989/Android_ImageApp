@@ -62,6 +62,7 @@ public class ImageOfTheDay extends BaseActivity implements DatePickerDialog.OnDa
         Toolbar toolbar = findViewById(R.id.home_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(getResources().getString(R.string.picOfDay));
+        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
 
 
         // Declare Buttons
@@ -99,7 +100,8 @@ public class ImageOfTheDay extends BaseActivity implements DatePickerDialog.OnDa
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
             alertDialogBuilder.setTitle(getResources().getString(R.string.dialog_title))
 
-                    .setMessage(getResources().getString(R.string.dialog_msg))
+                    .setMessage(getResources().getString(R.string.dialog_msg)
+                    + "\n\n" + nasa.getHdUrl())
 
                     .setPositiveButton(getResources().getString(R.string.btn_yes), ( clicked, arg) -> {
                         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(nasa.getHdUrl()));

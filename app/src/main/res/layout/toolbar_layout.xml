@@ -14,7 +14,6 @@
         android:layout_height="wrap_content"
         android:background="@color/Nasa_blue">
 
-        <!-- Textview instead of title -->
 
     </androidx.appcompat.widget.Toolbar>
 

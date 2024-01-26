@@ -40,6 +40,7 @@ public class favourite_date_list extends BaseActivity {
         Toolbar toolbar = findViewById(R.id.home_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(getResources().getString(R.string.favourite));
+        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
 
         // Initialize database opener
         myOpener = new MyOpener(this);

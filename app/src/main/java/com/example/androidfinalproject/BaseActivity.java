@@ -29,6 +29,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     private String msg;
 
     String activity = this.getClass().getSimpleName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +61,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
         if (item.getItemId() == R.id.home) {
             // brings you to main page
-            if(!activity.equals("MainActivity")) {
+            if (!activity.equals("MainActivity")) {
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
             }
@@ -71,37 +72,38 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
         return true;
     }
+
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         String message = null;
         //on click
         if (item.getItemId() == R.id.home) {
             // brings you to main page
-            if(!activity.equals("MainActivity")) {
+            if (!activity.equals("MainActivity")) {
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
             }
         } else if (item.getItemId() == R.id.picOfTheDay) {
             // brings you to picture of the day
-            if(!activity.equals("ImageOfTheDay")) {
+            if (!activity.equals("ImageOfTheDay")) {
                 Intent titleIntent = new Intent(this, ImageOfTheDay.class);
                 startActivity(titleIntent);
             }
         } else if (item.getItemId() == R.id.picRoulette) {
             // brings you to picture roulette
-            if(!activity.equals("PictureRoulette")) {
+            if (!activity.equals("PictureRoulette")) {
                 Intent rouletteIntent = new Intent(this, PictureRoulette.class);
                 startActivity(rouletteIntent);
             }
         } else if (item.getItemId() == R.id.profile) {
             // brings you to profile
-            if(!activity.equals("ProfileActivity")) {
+            if (!activity.equals("ProfileActivity")) {
                 Intent profileIntent = new Intent(this, ProfileActivity.class);
                 startActivity(profileIntent);
             }
         } else if (item.getItemId() == R.id.favouritePic) {
             // brings you to profile
-            if(!activity.equals("favourite_date_list")) {
+            if (!activity.equals("favourite_date_list")) {
                 Intent favouriteIntent = new Intent(this, favourite_date_list.class);
                 startActivity(favouriteIntent);
             }
@@ -125,16 +127,35 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void showHelpDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Help");
-        builder.setMessage(msg
-                + "\n\nExplanation for each program:\n\n"
-                + "1. Image of the Day: Enter a date to view or save the NASA image of the day!\n\n"
-                + "2. Picture Roulette: Picture roulette selects a random date to view!\n\n"
-                + "3. Favourites: View the previously selected favourites!");
 
-        builder.setPositiveButton("OK", null);
-        AlertDialog dialog = builder.create();
-        dialog.show();
+        String helpDisplay = "";
+
+        if (activity.equals("MainActivity")) {
+
+            helpDisplay = msg
+                    + "\n\n" + getResources().getString(R.string.helpheading) + "\n\n"
+                    + getResources().getString(R.string.help1) + "\n\n"
+                    + getResources().getString(R.string.help2) + "\n\n"
+                    + getResources().getString(R.string.help3) + "\n\n"
+                    + getResources().getString(R.string.help4);
+
+        } else if (activity.equals("ImageOfTheDay")) {
+            helpDisplay = msg + "\n\n" + getResources().getString(R.string.picOfDayHelp);
+        } else if (activity.equals("PictureRoulette")) {
+            helpDisplay = msg + "\n\n" + getResources().getString(R.string.picRouletteHelp);
+        } else if (activity.equals("favourite_date_list")) {
+            helpDisplay = msg + "\n\n" + getResources().getString(R.string.favouritesHelp);
+        } else if (activity.equals("ProfileActivity")) {
+            helpDisplay = msg + "\n\n" + getResources().getString(R.string.profileHelp);
+        }
+
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(getResources().getString(R.string.helpTitle));
+            builder.setMessage(helpDisplay);
+
+            builder.setPositiveButton("OK", null);
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
     }
-}

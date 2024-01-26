@@ -54,4 +54,17 @@
 
     <!-- Help menu -->
     <string name="intro">Bienvenu, </string>
+    <string name="helpTitle">Aide</string>
+    <string name="helpheading">Explication pour chaque programme:</string>
+    <string name="profileHelp">Bienvenue, sur votre profil, utilisez-le pour ajouter une personnalisation personnelle!</string>
+    <string name="picOfDayHelp">Sélectionnez le sélecteur de date en bas de l\'écran pour commencer à visualiser les images.
+    Vous pouvez également appuyer sur le bouton Enregistrer pour enregistrer l\'image!</string>
+    <string name="picRouletteHelp">Sélectionnez le bouton Démarrer en bas de l\’écran pour commencer à visualiser des images aléatoires.
+    Vous pouvez également appuyer sur le bouton Enregistrer pour enregistrer l\'image!</string>
+    <string name="favouritesHelp">Appuyez sur l\'une de vos images préférées pour voir cette image ! Si vous maintenez un
+    sélection, vous pouvez la supprimer!</string>
+    <string name="help1">1. Image du jour : saisissez une date pour afficher ou enregistrer l\'image du jour de la NASA!</string>
+    <string name="help2">2. Picture Roulette : la roulette d\'images sélectionne une date aléatoire à afficher!</string>
+    <string name="help3">3. Favoris : afficher les favoris précédemment sélectionnés!</string>
+    <string name="help4">4. Profil : affichez et mettez à jour votre profil!</string>
 </resources>
