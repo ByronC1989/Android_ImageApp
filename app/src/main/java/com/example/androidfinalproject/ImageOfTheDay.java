@@ -85,11 +85,11 @@ public class ImageOfTheDay extends BaseActivity implements DatePickerDialog.OnDa
 
                 MyOpener myOpener = new MyOpener(this);
                 myOpener.addToDB(nasa.getDate(), nasa.getTitle(), saveToFile(nasa), nasa.getUrl(), nasa.getHdUrl());
-                Snackbar.make(btnSave, "Data saved to database", Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(btnSave, getResources().getString(R.string.save_data), Snackbar.LENGTH_SHORT).show();
                 myOpener.close();
             } else {
 
-                Toast.makeText(ImageOfTheDay.this, "No data to save", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ImageOfTheDay.this, getResources().getString(R.string.no_data), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -131,7 +131,7 @@ public class ImageOfTheDay extends BaseActivity implements DatePickerDialog.OnDa
                 e.printStackTrace();
             }
         } else {
-            Toast.makeText(ImageOfTheDay.this, "No data to save", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ImageOfTheDay.this, getResources().getString(R.string.no_data), Toast.LENGTH_SHORT).show();
         }
         return fileName;
     }

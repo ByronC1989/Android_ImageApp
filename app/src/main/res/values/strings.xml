@@ -27,6 +27,9 @@
     <string name="btn_hd">HD Image</string>
     <string name="btn_datePicker">Pick a date</string>
     <string name="btn_save">Save Image</string>
+    <string name="no_data">No data to save</string>
+    <string name="save_data">Data saved to database</string>
+
 
     <!-- Image Roulette Strings -->
     <string name="btn_roulette">Start Roulette!</string>
