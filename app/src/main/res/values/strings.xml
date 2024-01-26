@@ -13,6 +13,8 @@
     <string name="help" translatable="false">Help</string>
 
     <!-- Main Activity Strings -->
+    <string name="welcome" translatable="false">Nasa Image Picker is an app that allow you to
+    select different images from NASA based on the date!</string>
 
     <!-- Alert box-->
     <string name="dialog_title" translatable="false">Warning</string>

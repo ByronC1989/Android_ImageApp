@@ -9,20 +9,13 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/home_toolbar"
         android:title="@string/app_name"
-        android:textColor="@color/white"
+        android:titleTextColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/Nasa_blue">
-     <!--
-        <Button
-        android:id="@+id/btn_help"
-        app:icon="@drawable/img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:backgroundTint="@color/Nasa_blue"
-        android:layout_gravity="end" />
-        -->
+
+        <!-- Textview instead of title -->
+
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.drawerlayout.widget.DrawerLayout
