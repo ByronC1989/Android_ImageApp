@@ -24,7 +24,6 @@ import com.google.android.material.navigation.NavigationView;
  *
  * @author Byron, Alycia
  */
-
 public class ProfileActivity extends BaseActivity {
 
     private Drawable myDrawable;
@@ -102,7 +101,6 @@ public class ProfileActivity extends BaseActivity {
      *
      * @param savedAvatar string
      */
-
     public void avaterControl (String savedAvatar){
         if (savedAvatar.equals("alien") || savedAvatar.equals("extraterrestre")) {
             // update image view

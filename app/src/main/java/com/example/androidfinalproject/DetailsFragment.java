@@ -27,6 +27,7 @@ import java.io.IOException;
  *
  * @author Byron, Alycia
  */
+
 public class DetailsFragment extends Fragment {
 
     private Bundle dataFromActivity;

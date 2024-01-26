@@ -22,7 +22,6 @@ import java.util.List;
  *
  * @author Byron, Alycia
  */
-
 public class favourite_date_list extends BaseActivity {
     private List<NasaImage> SavedDateList;
     private MyListAdapter NasaImage;

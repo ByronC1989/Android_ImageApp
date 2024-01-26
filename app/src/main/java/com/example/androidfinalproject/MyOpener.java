@@ -16,7 +16,6 @@ import java.util.List;
  *
  * @author Byron, Alycia
  */
-
 public class MyOpener extends SQLiteOpenHelper {
     protected static String DATABASE_NAME = "NasaDB";
     protected static int VERSION_NUM = 1;

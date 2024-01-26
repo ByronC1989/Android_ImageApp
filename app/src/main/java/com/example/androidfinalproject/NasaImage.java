@@ -8,7 +8,6 @@ import android.graphics.Bitmap;
  *
  * @author Byron, Alycia
  */
-
 public class NasaImage {
 
     // store variables of Nasa Images from JSON payload

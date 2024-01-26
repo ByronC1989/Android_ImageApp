@@ -47,7 +47,6 @@ import java.util.Random;
  *
  * @author Byron, Alycia
  */
-
 public class PictureRoulette extends BaseActivity {
 
     static final String baseUrl = "https://api.nasa.gov/planetary/apod?api_key=DgPLcIlnmN0Cwrzcg3e9NraFaYLIDI68Ysc6Zh3d&date=";

@@ -28,7 +28,6 @@ import com.google.android.material.navigation.NavigationView;
  *
  * @author Byron, Alycia
  */
-
 public class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private NavigationView navigationView;

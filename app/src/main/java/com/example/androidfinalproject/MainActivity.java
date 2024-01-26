@@ -29,7 +29,6 @@ import com.google.android.material.navigation.NavigationView;
  *
  * @author Byron, Alycia
  */
-
 public class MainActivity extends BaseActivity {
     private NavigationView navigationView;
     private Drawable myDrawable;

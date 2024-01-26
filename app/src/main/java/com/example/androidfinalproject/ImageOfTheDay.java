@@ -41,7 +41,6 @@ import java.util.Calendar;
  *
  * @author Byron, Alycia
  */
-
 public class ImageOfTheDay extends BaseActivity implements DatePickerDialog.OnDateSetListener {
 
     // View and Button Variables.

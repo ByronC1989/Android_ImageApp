@@ -15,7 +15,6 @@ import com.google.android.material.navigation.NavigationView;
  *
  * @author Byron, Alycia
  */
-
 public class FrameActivity extends BaseActivity {
 
     private NavigationView navigationView;
