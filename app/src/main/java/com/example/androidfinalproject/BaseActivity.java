@@ -108,6 +108,9 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             // exit application
             finishAffinity();
         }
+
+        Toast.makeText(this, "You selected: " + item, Toast.LENGTH_SHORT).show();
+
         return true;
     }
 
