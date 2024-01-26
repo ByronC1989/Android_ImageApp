@@ -68,6 +68,7 @@ public class PictureRoulette extends BaseActivity {
         // Adds toolbar to Activity
         Toolbar toolbar = findViewById(R.id.home_toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(getResources().getString(R.string.picRoulette));
 
         // Declare ProgressBar
         progress = findViewById(R.id.progressBar);

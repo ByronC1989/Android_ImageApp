@@ -39,7 +39,7 @@ public class favourite_date_list extends BaseActivity {
         // Adds toolbar to Activity
         Toolbar toolbar = findViewById(R.id.home_toolbar);
         setSupportActionBar(toolbar);
-
+        getSupportActionBar().setTitle(getResources().getString(R.string.favourite));
 
         // Initialize database opener
         myOpener = new MyOpener(this);

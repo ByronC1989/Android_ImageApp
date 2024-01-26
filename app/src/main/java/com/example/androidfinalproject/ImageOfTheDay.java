@@ -61,6 +61,7 @@ public class ImageOfTheDay extends BaseActivity implements DatePickerDialog.OnDa
         // Adds toolbar to Activity
         Toolbar toolbar = findViewById(R.id.home_toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(getResources().getString(R.string.picOfDay));
 
 
         // Declare Buttons

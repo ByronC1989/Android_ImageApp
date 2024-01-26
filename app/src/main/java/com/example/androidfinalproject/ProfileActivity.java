@@ -33,6 +33,7 @@ public class ProfileActivity extends BaseActivity {
         Toolbar toolbar = findViewById(R.id.home_toolbar);
 
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(getResources().getString(R.string.profile));
 
 
         SharedPreferences prefs = getSharedPreferences("profile", Context.MODE_PRIVATE);

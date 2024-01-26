@@ -14,21 +14,28 @@
     <string name="help">Aide</string>
 
     <!-- Main Activity Strings -->
+    <string name="welcome">Nasa Image Picker est une application qui vous permet de
+    sélectionner différentes images de la NASA en fonction de la date!</string>
 
     <!-- Alert box-->
     <string name="dialog_title" >avertissement</string>
-    <string name="dialog_msg"> Cela ouvrira votre navigateur !</string>
+    <string name="dialog_msg"> Cela ouvrira votre navigateur!</string>
     <string name="btn_yes">Oui</string>
     <string name="btn_no">Non</string>
+    <string name="row_num">La ligne sélectionnée est:</string>
+    <string name="delete">Voulez-vous supprimer ceci?</string>
 
     <!-- Image of the Day Strings -->
     <string name="browser_msg">Cliquez sur le bouton ci-dessous pour accéder à l\'image HD.</string>
     <string name="btn_hd">Images HD</string>
     <string name="btn_datePicker">Choisis une date</string>
     <string name="btn_save">Enregistrer l\'image</string>
+    <string name="no_data">Aucune donnée à sauvegarder</string>
+    <string name="save_data">Données enregistrées dans la base de données</string>
 
     <!-- Image Roulette Strings -->
     <string name="btn_roulette">Roulette Stratégique!</string>
+    <string name="btn_end">Fin de la roulette!</string>
 
     <!-- Profile -->
     <string name="name_msg">Veuillez entrer votre nom d\'utilisateur ci-dessous:</string>
@@ -39,4 +46,12 @@
     <string name="radio2">orbite</string>
     <string name="radio3">comète</string>
 
+    <!-- Activity Titles -->
+    <string name="favourite">Liste des favoris v1.0</string>
+    <string name="picOfDay">Image du jour v1.0</string>
+    <string name="picRoulette">Roulette en images v1.0</string>
+    <string name="profile">Profil v1.0</string>
+
+    <!-- Help menu -->
+    <string name="intro">Bienvenu, </string>
 </resources>

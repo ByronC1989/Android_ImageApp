@@ -36,6 +36,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
         Toolbar toolbar = findViewById(R.id.home_toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(getResources().getString(R.string.app_name));
 
         DrawerLayout drawerLayout = findViewById(R.id.homedrawer);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
@@ -49,7 +50,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         SharedPreferences prefs = getSharedPreferences("profile", Context.MODE_PRIVATE);
         String savedName = prefs.getString("username", " ");
 
-        msg = "Welcome, " + savedName;
+        msg = getResources().getString(R.string.intro) + " " + savedName;
 
 
     }
