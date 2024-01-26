@@ -23,6 +23,13 @@ import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
+/**
+ *  This class is a basic welcome page that the
+ *  user is greeted with when the start the applications
+ *
+ * @author Byron, Alycia
+ */
+
 public class MainActivity extends BaseActivity {
     private NavigationView navigationView;
     private Drawable myDrawable;

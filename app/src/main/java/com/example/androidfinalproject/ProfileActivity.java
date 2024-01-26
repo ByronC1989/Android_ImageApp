@@ -18,6 +18,13 @@ import android.widget.RadioGroup;
 
 import com.google.android.material.navigation.NavigationView;
 
+/**
+ *  This class allows the user to add customization to the
+ *  application such as adding a username and avatar.
+ *
+ * @author Byron, Alycia
+ */
+
 public class ProfileActivity extends BaseActivity {
 
     private Drawable myDrawable;
@@ -87,6 +94,13 @@ public class ProfileActivity extends BaseActivity {
 
         });
     }
+
+    /**
+     *  this method takes a value from a string to determine the
+     *  correct image to display
+     *
+     * @param savedAvatar string
+     */
 
     public void avaterControl (String savedAvatar){
         if (savedAvatar.equals("alien") || savedAvatar.equals("extraterrestre")) {

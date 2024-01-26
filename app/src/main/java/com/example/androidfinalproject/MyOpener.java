@@ -10,6 +10,13 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *  This class creates the Database on the phone and
+ *  stores methods for CRUD operations
+ *
+ * @author Byron, Alycia
+ */
+
 public class MyOpener extends SQLiteOpenHelper {
     protected static String DATABASE_NAME = "NasaDB";
     protected static int VERSION_NUM = 1;

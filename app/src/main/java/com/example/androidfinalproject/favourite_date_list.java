@@ -16,6 +16,13 @@ import com.google.android.material.navigation.NavigationView;
 
 import java.util.List;
 
+/**
+ *  This class displayed a list of all the
+ *  saved images that the user selected
+ *
+ * @author Byron, Alycia
+ */
+
 public class favourite_date_list extends BaseActivity {
     private List<NasaImage> SavedDateList;
     private MyListAdapter NasaImage;

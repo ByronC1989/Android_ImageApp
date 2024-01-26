@@ -3,9 +3,14 @@ package com.example.androidfinalproject;
 
 import android.graphics.Bitmap;
 
+/**
+ *  This class stores the values from the JSON object
+ *
+ * @author Byron, Alycia
+ */
+
 public class NasaImage {
 
-    // use builder pattern for creating NasaImage objects?
     // store variables of Nasa Images from JSON payload
     private String date;
     private String url;

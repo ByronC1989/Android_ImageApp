@@ -22,6 +22,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 
+/**
+ *  This class handles toolbar functionality which can be
+ *  extended to all other activities.
+ *
+ * @author Byron, Alycia
+ */
 
 public class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 

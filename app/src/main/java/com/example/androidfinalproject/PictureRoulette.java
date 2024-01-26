@@ -40,6 +40,14 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 
+/**
+ *  This class allows the user to find random dates
+ *  and displays the image of that day from NASA the user can then
+ *  save the image.
+ *
+ * @author Byron, Alycia
+ */
+
 public class PictureRoulette extends BaseActivity {
 
     static final String baseUrl = "https://api.nasa.gov/planetary/apod?api_key=DgPLcIlnmN0Cwrzcg3e9NraFaYLIDI68Ysc6Zh3d&date=";

@@ -12,6 +12,13 @@ import androidx.fragment.app.DialogFragment;
 
 import java.util.Calendar;
 
+/**
+ *  This class creates a Data picker fragment to be
+ *  used my Image of the day.
+ *
+ * @author Byron, Alycia
+ */
+
 public class DatePickerFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {

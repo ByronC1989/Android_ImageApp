@@ -21,6 +21,12 @@ import android.widget.TextView;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+/**
+ *  This class handles adding content passed to it by the
+ *  favourites list to be displayed in a fragment.
+ *
+ * @author Byron, Alycia
+ */
 public class DetailsFragment extends Fragment {
 
     private Bundle dataFromActivity;

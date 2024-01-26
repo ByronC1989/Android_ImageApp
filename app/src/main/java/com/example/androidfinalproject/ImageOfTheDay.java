@@ -34,6 +34,14 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+/**
+ *  This class allows the user to select a date
+ *  and displays the image of that day from NASA the user can then
+ *  save the image or open the link to the HD image
+ *
+ * @author Byron, Alycia
+ */
+
 public class ImageOfTheDay extends BaseActivity implements DatePickerDialog.OnDateSetListener {
 
     // View and Button Variables.

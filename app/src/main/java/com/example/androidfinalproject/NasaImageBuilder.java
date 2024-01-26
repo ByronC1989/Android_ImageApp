@@ -1,5 +1,11 @@
 package com.example.androidfinalproject;
 
+
+/**
+ *  This class helps with the creation of NasaImage objects
+ *
+ * @author Byron, Alycia
+ */
 public class NasaImageBuilder {
     private String date;
     private String url;

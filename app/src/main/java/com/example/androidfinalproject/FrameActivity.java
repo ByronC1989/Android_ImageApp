@@ -9,6 +9,13 @@ import android.os.Bundle;
 
 import com.google.android.material.navigation.NavigationView;
 
+/**
+ *  This class takes the detailsFragement
+ *  and displays it on the page
+ *
+ * @author Byron, Alycia
+ */
+
 public class FrameActivity extends BaseActivity {
 
     private NavigationView navigationView;
