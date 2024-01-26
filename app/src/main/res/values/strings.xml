@@ -35,7 +35,7 @@
     <string name="btn_profileSave">Save</string>
     <string name="profile_name">Name</string>
     <string name="radio1">alien</string>
-    <string name="radio2">moon</string>
+    <string name="radio2">orbit</string>
     <string name="radio3">comet</string>
 
 </resources>

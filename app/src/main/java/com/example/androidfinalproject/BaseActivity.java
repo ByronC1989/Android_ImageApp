@@ -36,8 +36,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         Toolbar toolbar = findViewById(R.id.home_toolbar);
         setSupportActionBar(toolbar);
 
-//        Button helpButton = findViewById(R.id.btn_help);
-//        helpButton.setOnClickListener(v -> showHelpDialog());
         DrawerLayout drawerLayout = findViewById(R.id.homedrawer);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
                 drawerLayout, toolbar, R.string.open, R.string.close);
