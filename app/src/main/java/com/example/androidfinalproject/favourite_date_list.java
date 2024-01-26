@@ -8,11 +8,18 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import com.google.android.material.navigation.NavigationView;
+
 import java.util.List;
 
-public class favourite_date_list extends AppCompatActivity {
+public class favourite_date_list extends BaseActivity {
     private List<NasaImage> SavedDateList;
     private MyListAdapter NasaImage;
     private MyOpener myOpener;
@@ -25,14 +32,17 @@ public class favourite_date_list extends AppCompatActivity {
     private static final String NASA_FILEPATH = "filePath";
 
 
+    private NavigationView navigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.favourite_date);
 
-        // get name of activity test
-        String activity = this.getClass().getSimpleName();
-        Log.e("appName", "Activity Name: " + activity);
+        // Adds toolbar to Activity
+        Toolbar toolbar = findViewById(R.id.home_toolbar);
+        setSupportActionBar(toolbar);
+
 
         // Initialize database opener
         myOpener = new MyOpener(this);

@@ -10,8 +10,7 @@
     <!-- Add toolbar needs to be last in layout -->
     <include
         android:id="@+id/include"
-        layout="@layout/toolbar_layout"
-        />
+        layout="@layout/toolbar_layout" />
 
     <FrameLayout
         android:layout_width="match_parent"

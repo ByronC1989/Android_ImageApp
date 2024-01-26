@@ -65,15 +65,6 @@ public class PictureRoulette extends BaseActivity {
         Toolbar toolbar = findViewById(R.id.home_toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawerLayout = findViewById(R.id.homedrawer);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
-                drawerLayout, toolbar, R.string.open, R.string.close);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
-
-        navigationView = findViewById(R.id.navigation_view);
-        navigationView.setNavigationItemSelectedListener(this);
-
         // Declare ProgressBar
         progress = findViewById(R.id.progressBar);
 
@@ -110,9 +101,6 @@ public class PictureRoulette extends BaseActivity {
             }
         });
 
-        // get name of activity test
-        String activity = this.getClass().getSimpleName();
-        Log.e("appName", "Activity Name: " + activity);
     }
 
     public String randomDate() {

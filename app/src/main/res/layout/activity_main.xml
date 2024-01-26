@@ -6,10 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!-- Add toolbar needs to be last in layout -->
-    <include
-        android:id="@+id/include"
-        layout="@layout/toolbar_layout" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -19,6 +15,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Add toolbar needs to be last in layout -->
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar_layout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

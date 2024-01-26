@@ -70,15 +70,6 @@ public class ImageOfTheDay extends BaseActivity implements DatePickerDialog.OnDa
         Toolbar toolbar = findViewById(R.id.home_toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawerLayout = findViewById(R.id.homedrawer);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
-                drawerLayout, toolbar, R.string.open, R.string.close);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
-
-        navigationView = findViewById(R.id.navigation_view);
-        navigationView.setNavigationItemSelectedListener(this);
-
 
         // Declare Buttons
         btnDate = findViewById(R.id.btn_date);
@@ -127,10 +118,6 @@ public class ImageOfTheDay extends BaseActivity implements DatePickerDialog.OnDa
 
                     .create().show();
         });
-
-        // get name of activity test
-        String activity = this.getClass().getSimpleName();
-        Log.e("appName", "Activity Name: " + activity);
 
     }
     private String saveToFile(NasaImage nasa) {

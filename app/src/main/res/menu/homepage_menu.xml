@@ -5,30 +5,30 @@
         android:id="@+id/home"
         android:title="@string/menuHome"
         android:orderInCategory="5"
-        app:showAsAction="never" />
+        app:showAsAction="always" />
     <item
         android:id="@+id/profile"
         android:title="@string/menuProfile"
         android:orderInCategory="5"
-        app:showAsAction="never" />
+        app:showAsAction="always" />
     <item
         android:id="@+id/picOfTheDay"
         android:title="@string/menuPicOfDay"
         android:orderInCategory="5"
-        app:showAsAction="never" />
+        app:showAsAction="always" />
     <item
         android:id="@+id/picRoulette"
         android:title="@string/menuPicRoulette"
         android:orderInCategory="5"
-        app:showAsAction="never" />
+        app:showAsAction="always" />
     <item
         android:id="@+id/favouritePic"
         android:title="@string/menuFavouritePic"
         android:orderInCategory="5"
-        app:showAsAction="never" />
+        app:showAsAction="always" />
     <item
         android:id="@+id/exit"
         android:title="@string/menuExit"
         android:orderInCategory="5"
-        app:showAsAction="never" />
+        app:showAsAction="always" />
 </menu>

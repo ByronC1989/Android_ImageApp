@@ -39,9 +39,6 @@ public class MainActivity extends BaseActivity {
 
         navigationView = findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(this);
-        // get name of activity test
-        String activity = this.getClass().getSimpleName();
-        Log.e("appName", "Activity Name: " + activity);
 
     }
 

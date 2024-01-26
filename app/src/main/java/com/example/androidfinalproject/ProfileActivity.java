@@ -20,7 +20,6 @@ import com.google.android.material.navigation.NavigationView;
 
 public class ProfileActivity extends BaseActivity {
 
-    private NavigationView navigationView;
     private Drawable myDrawable;
     private String avatarName;
 
@@ -34,14 +33,6 @@ public class ProfileActivity extends BaseActivity {
 
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawerLayout = findViewById(R.id.homedrawer);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
-                drawerLayout, toolbar, R.string.open, R.string.close);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
-
-        navigationView = findViewById(R.id.navigation_view);
-        navigationView.setNavigationItemSelectedListener(this);
 
 
         SharedPreferences prefs = getSharedPreferences("profile", Context.MODE_PRIVATE);
