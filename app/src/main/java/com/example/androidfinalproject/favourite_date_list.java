@@ -78,9 +78,9 @@ public class favourite_date_list extends BaseActivity {
         savedDateListView.setOnItemLongClickListener((parent, view, position, id) -> {
             // Display a confirmation for deleting a date
             AlertDialog.Builder alert = new AlertDialog.Builder(this);
-            alert.setTitle("Do you want to delete this?")
-                    .setMessage("The selected row is:" + (position + 1))
-                    .setPositiveButton("Yes", (click, arg) -> {
+            alert.setTitle(getResources().getString(R.string.delete))
+                    .setMessage(getResources().getString(R.string.row_num)+ " " + (position + 1))
+                    .setPositiveButton(getResources().getString(R.string.btn_yes), (click, arg) -> {
                         String Date = SavedDateList.get(position).getDate();
 
                         // Delete the date from the database
@@ -90,7 +90,7 @@ public class favourite_date_list extends BaseActivity {
                         SavedDateList.remove(position);
                         NasaImage.notifyDataSetChanged();
                     })
-                    .setNegativeButton("No", (click, arg) -> {
+                    .setNegativeButton(getResources().getString(R.string.btn_no), (click, arg) -> {
                     })
                     .create().show();
             return true;
